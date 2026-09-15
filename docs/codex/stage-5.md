@@ -3,6 +3,15 @@
 Read `AGENTS.md`, spec §10, §12 (Contact), §14, §17 and `docs/v1-content-brief.md` §6. The attached image is the
 approved visual direction. Stages 1–4 are in place: reuse primitives, `page-hero`, services and work data.
 
+## Stage 4 review fix (do this first)
+
+`/work?category=operations` at 320px: the pressed "Operations" filter button sits off-screen to the right inside the
+horizontally scrolling `.work-filter` row, so the active state is invisible on load. After hydration (and whenever
+the selection changes), scroll the pressed button into view within the row only — set the row's `scrollLeft`
+(e.g. `button.offsetLeft - row.offsetLeft - padding`), not `scrollIntoView`, so the page itself never scrolls.
+Respect reduced motion (instant). Add a small visible end fade on `.work-filter` when it overflows, matching the
+Services technology strip. Add a unit test for the scroll-offset helper if you extract one.
+
 Build `/contact` from components in `src/components/contact/` and `src/components/ui/` field primitives, copy in
 `src/content/contact.ts`:
 

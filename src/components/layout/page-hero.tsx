@@ -1,17 +1,17 @@
 import { ButtonLink } from "@/components/ui/button-link";
 import { SectionLabel } from "@/components/ui/section-label";
 import type { NavigationLink } from "@/content/navigation";
-import "@/styles/page-hero.css";
 
 type PageHeroProps = {
   eyebrow: string;
   heading: string;
   introduction: string;
+  note?: string;
   emphasis?: string;
   cta?: NavigationLink;
 };
 
-export function PageHero({ eyebrow, heading, introduction, emphasis, cta }: PageHeroProps) {
+export function PageHero({ eyebrow, heading, introduction, note, emphasis, cta }: PageHeroProps) {
   const emphasisIndex = emphasis ? heading.indexOf(emphasis) : -1;
 
   return (
@@ -31,6 +31,7 @@ export function PageHero({ eyebrow, heading, introduction, emphasis, cta }: Page
           <p>{introduction}</p>
           {cta && <ButtonLink href={cta.href}>{cta.label}</ButtonLink>}
         </div>
+        {note && <p className="page-hero__note">{note}</p>}
       </div>
     </header>
   );

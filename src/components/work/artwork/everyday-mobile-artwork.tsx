@@ -1,5 +1,4 @@
 import { artwork } from "@/content/artwork";
-import "./artwork.css";
 
 export function EverydayMobileArtwork() {
   const content = artwork.mobile;

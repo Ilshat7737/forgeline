@@ -1,5 +1,5 @@
 type ArtworkContent = {
-  financial: { alt: string; sample: string; title: string; navigation: readonly string[]; balanceLabel: string; balance: string; period: string; chartLabel: string; activityLabel: string; accounts: readonly { name: string; status: string; amount: string }[] };
+  financial: { alt: string; sample: string; title: string; navigation: readonly string[]; balanceLabel: string; balance: string; period: string; chartLabel: string; activityLabel: string; action: string; accounts: readonly { name: string; status: string; amount: string }[] };
   mobile: { alt: string; sample: string; title: string; tabs: readonly string[]; tasks: readonly { title: string; detail: string }[]; progressTitle: string; progressValue: string; progressLabel: string; nextLabel: string; nextTask: string };
 };
 
@@ -9,7 +9,7 @@ export const artwork = {
     alt: "Illustrative financial dashboard with a sample balance, activity chart and three account records.",
     sample: "SAMPLE WORKSPACE", title: "Overview",
     navigation: ["Overview", "Activity", "Accounts", "Settings"],
-    balanceLabel: "Total balance", balance: "$12,000", period: "This month", chartLabel: "Balance activity", activityLabel: "Recent activity",
+    balanceLabel: "Total balance", balance: "$12,000", period: "This month", chartLabel: "Balance activity", activityLabel: "Recent activity", action: "Review pending",
     accounts: [
       { name: "Account A", status: "Received", amount: "+ $2,000" },
       { name: "Account B", status: "Pending", amount: "$1,000" },

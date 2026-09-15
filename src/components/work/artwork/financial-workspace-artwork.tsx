@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 import { artwork } from "@/content/artwork";
-import "./artwork.css";
 
 const bars = [22, 32, 28, 44, 36, 50, 62, 44, 70, 54, 64, 82, 62, 76, 66, 90, 78, 100];
 
@@ -34,6 +33,7 @@ export function FinancialWorkspaceArtwork() {
                   <span>{account.amount}</span>
                 </div>
               ))}
+              <span className="financial-dashboard__action">{content.action}</span>
             </div>
           </div>
         </div>

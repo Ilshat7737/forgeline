@@ -39,6 +39,7 @@
 .financial-dashboard__record > span:last-child { margin-left: auto; white-space: nowrap; }
 .financial-dashboard__record small { display: block; font-size: 0.95cqw; }
 .financial-dashboard__avatar { display: grid; place-items: center; width: 2.5cqw; height: 2.5cqw; background: var(--color-plum-800); color: var(--color-lavender-300); border-radius: 50%; }
+.financial-dashboard__action { display: inline-block; margin-top: 1.5cqw; padding: 0.7cqw 1cqw; background: var(--color-coral-500); color: var(--color-plum-900); font-size: 1.15cqw; font-weight: 600; }
 .mobile-artwork { background: linear-gradient(115deg, var(--color-lavender-300), var(--color-lavender-100)); }
 .mobile-artwork__composition { position: absolute; inset: 0; transform: rotate(-7deg) translateY(2cqw); }
 .task-screen { position: absolute; width: 40cqw; background: var(--color-plum-950); padding: 3cqw; border: 1px solid var(--color-border-dark); border-radius: 1.2cqw; }

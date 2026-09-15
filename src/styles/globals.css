@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./tokens.css";
+@import "./page-hero.css";
+@import "../components/work/artwork/artwork.css";
 
 @theme inline {
   --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;

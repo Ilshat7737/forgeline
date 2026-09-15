@@ -5,6 +5,8 @@ import { PageHero } from "@/components/layout/page-hero";
 import { ContactSupport } from "@/components/contact/contact-support";
 import { ProjectEnquiryForm } from "@/components/contact/project-enquiry-form";
 import { resolveContactQuery, type ContactSearchParams } from "@/lib/contact-query";
+import { legalDocuments } from "@/content/legal";
+import { isLegalDocumentPublished } from "@/lib/legal";
 import { pageMetadata } from "@/lib/metadata";
 import "@/styles/contact.css";
 
@@ -18,7 +20,12 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
       <div className="contact-area" data-surface="light">
         <div className="site-container contact-layout">
           <ContactSupport />
-          <div className="contact-form-region"><ProjectEnquiryForm defaults={defaults} /></div>
+          <div className="contact-form-region">
+            <ProjectEnquiryForm
+              defaults={defaults}
+              privacyHref={isLegalDocumentPublished(legalDocuments.privacyPolicy) ? legalDocuments.privacyPolicy.path : undefined}
+            />
+          </div>
         </div>
       </div>
     </>

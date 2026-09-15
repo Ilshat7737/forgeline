@@ -29,6 +29,8 @@
   .contact-services[aria-invalid="true"] { border: 1px solid var(--color-error-strong); padding: 0.75rem; }
   .contact-services__options { display: grid; gap: 0.25rem 1.5rem; }
   .contact-form__privacy { margin-block: 2rem 1.5rem; font-size: 0.875rem; }
+  .contact-form__privacy-link { display: inline-block; min-height: 24px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .contact-form__privacy-link:is(:hover, :focus-visible) { text-decoration-thickness: 2px; }
   .contact-form__submit { width: 100%; border-radius: var(--radius-control); }
   .contact-form__submit:disabled { cursor: wait; background: var(--color-plum-900); color: var(--color-ivory); }
   .contact-error-summary { margin-top: 2rem; padding: 1.25rem; border: 2px solid var(--color-error-strong); }

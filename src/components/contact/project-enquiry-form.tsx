@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +17,8 @@ import { ContactSuccess } from "./contact-success";
 
 const fieldNames = Object.keys(contactFields) as ContactFieldName[];
 
-export function ProjectEnquiryForm({ defaults }: { defaults: ContactDefaults }) {
+/** `privacyHref` is passed only once the Privacy Policy is published, so the helper never links to a draft. */
+export function ProjectEnquiryForm({ defaults, privacyHref }: { defaults: ContactDefaults; privacyHref?: string }) {
   const [result, setResult] = useState<EnquiryResult | null>(null);
   const [failedAttempt, setFailedAttempt] = useState(0);
   // Honeypot: visitors never see or reach it; automated submissions that fill it are rejected on the server.
@@ -31,6 +33,7 @@ export function ProjectEnquiryForm({ defaults }: { defaults: ContactDefaults }) 
     // App Router navigation can supply a new suggestion while this form remains mounted.
     if (defaults.project && getValues("project") === "") setValue("project", defaults.project);
   }, [defaults.project, getValues, setValue]);
+
   const errorFields = fieldNames.filter((name) => errors[name]?.message);
   const showSummary = failedAttempt > 0 && errorFields.length > 0;
   // Field errors can arrive a render after the failed attempt, so focus once per attempt when the summary exists.
@@ -65,7 +68,7 @@ export function ProjectEnquiryForm({ defaults }: { defaults: ContactDefaults }) 
   return (
     <section aria-labelledby="contact-form-heading">
       <h2 id="contact-form-heading">{contactPage.formHeading}</h2>
-      {failedAttempt > 0 && errorFields.length > 0 && (
+      {showSummary && (
         <div className="contact-error-summary" ref={summary} tabIndex={-1} aria-labelledby="contact-error-heading">
           <h3 id="contact-error-heading">{contactPage.errorSummary}</h3>
           <ul>{errorFields.map((name) => (
@@ -95,7 +98,10 @@ export function ProjectEnquiryForm({ defaults }: { defaults: ContactDefaults }) 
           <Field {...contactFields.timing} {...register("timing")} id="contact-timing" error={errors.timing?.message} />
           <CheckboxField {...contactFields.ndaRequested} {...register("ndaRequested")} id="contact-ndaRequested" error={errors.ndaRequested?.message} />
         </fieldset>
-        <p className="contact-form__privacy">{contactPage.privacy}</p>
+        <p className="contact-form__privacy">
+          {contactPage.privacy}
+          {privacyHref && <> <Link href={privacyHref} className="contact-form__privacy-link">{contactPage.privacyLink}</Link></>}
+        </p>
         {result?.status === "error" && <p className="contact-form__failure" role="alert">{result.code === "not-configured" ? contactErrors.notConfigured : contactErrors.general}</p>}
         <button type="submit" className="button-link button-link--primary contact-form__submit" data-surface="light" disabled={isSubmitting}>
           <span>{isSubmitting ? contactPage.pending : contactPage.submit}</span>

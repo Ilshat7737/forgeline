@@ -80,6 +80,7 @@ export const contactPage = {
   required: "Required", optional: "Optional",
   errorSummary: "Check the highlighted fields.",
   privacy: "We will use these details to respond to your enquiry.",
+  privacyLink: "Read our Privacy Policy.",
   submit: "Send project brief", pending: "Sending…",
   honeypot: "Website",
   success: {

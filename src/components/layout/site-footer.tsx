@@ -1,10 +1,14 @@
 import Link from "next/link";
-import { legalNavigation, navigation } from "@/content/navigation";
+import { legalUi } from "@/content/legal";
+import { navigation } from "@/content/navigation";
 import { getCopyright, site } from "@/content/site";
 import { ArrowIcon } from "@/components/ui/arrow-icon";
 import { Wordmark } from "@/components/ui/wordmark";
+import { publishedLegalLinks } from "@/lib/legal";
 
 export function SiteFooter() {
+  // Legal pages appear only once published, so the footer never links to a draft or a 404.
+  const legalNavigation = publishedLegalLinks();
   return (
     <footer className="border-t border-border-dark bg-plum-950" data-surface="dark">
       <div className="site-container py-6 lg:py-8">
@@ -24,7 +28,7 @@ export function SiteFooter() {
               {navigation.contact.label}<ArrowIcon direction="east" className="shrink-0" />
             </Link>
             {legalNavigation.length > 0 && (
-              <ul className="mt-3">
+              <ul className="mt-3" aria-label={legalUi.footerLabel}>
                 {legalNavigation.map((link) => (
                   <li key={link.href}><Link href={link.href} className="nav-link">{link.label}</Link></li>
                 ))}

@@ -18,7 +18,3 @@ export const navigation = {
   contact: NavigationLink;
   menu: { open: string; close: string };
 };
-
-// Enable only once real Privacy Policy and Website Terms routes are supplied.
-// No placeholder destinations are rendered in V1.
-export const legalNavigation: readonly NavigationLink[] = [];

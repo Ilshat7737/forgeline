@@ -1,0 +1,75 @@
+@theme static {
+  --color-*: initial;
+  --color-plum-950: #160f1b;
+  --color-plum-900: #231525;
+  --color-plum-800: #332035;
+  --color-coral-500: #ff786a;
+  --color-coral-600: #ec675b;
+  --color-coral-700: #a8322a;
+  --color-lavender-300: #e0b7ff;
+  --color-lavender-100: #f0e5f6;
+  --color-ivory: #fff9f5;
+  --color-ink: #1d1220;
+  --color-white: #ffffff;
+  --color-border-dark: rgb(240 229 246 / 26%);
+  --color-border-light: rgb(35 21 37 / 22%);
+  --color-focus: #ff9b91;
+  --color-error: #ff5f5f;
+  --color-error-strong: #b3261e;
+  --color-success: #d8ffcf;
+}
+
+:root {
+  --type-display-xl: clamp(3.5rem, 17vw, 5.5rem);
+  --leading-display-xl: 0.86;
+  --type-display-lg: clamp(3.5rem, 17vw, 5.5rem);
+  --leading-display-lg: 0.88;
+  --type-display-md: clamp(3rem, 5vw, 5.5rem);
+  --leading-display-md: 0.92;
+  --type-heading-lg: clamp(2.25rem, 3.5vw, 4rem);
+  --leading-heading-lg: 1;
+  --type-heading-md: 1.75rem;
+  --leading-heading-md: 1.1;
+  --type-body-lg: 1.25rem;
+  --leading-body-lg: 1.55;
+  --type-body-md: 1rem;
+  --leading-body-md: 1.6;
+  --type-label: 0.75rem;
+  --leading-label: 1.2;
+  --type-label-tracking: 0.14em;
+
+  --space-unit: 0.5rem;
+  --layout-content: 90rem;
+  --layout-gutter: 1.5rem;
+  --layout-page-padding: 1.25rem;
+  --layout-section-padding: clamp(4.5rem, 10vw, 5.5rem);
+  --layout-columns: 12;
+  --layout-measure: 66ch;
+  --layout-header-height: 4rem;
+  --radius-panel: 0;
+  --radius-control: 0.25rem;
+  --motion-control: 180ms;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --layout-page-padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --type-display-xl: clamp(5.5rem, 9.2vw, 10rem);
+    --leading-display-xl: 0.84;
+    --type-display-lg: clamp(4rem, 7vw, 7.5rem);
+    --layout-page-padding: 3rem;
+    --layout-section-padding: clamp(7rem, 10vw, 10rem);
+    --layout-header-height: 5.25rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --layout-page-padding: 4rem;
+  }
+}

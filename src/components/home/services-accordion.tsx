@@ -40,7 +40,6 @@ export function ServicesAccordion() {
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
                         <path d="M3 12h18" />{!open && <path d="M12 3v18" />}
                       </svg>
-                      <span className="sr-only">{open ? home.services.collapse : home.services.expand}</span>
                     </span>
                   </button>
                 </h3>

@@ -58,6 +58,9 @@
 
 @supports (-webkit-text-stroke: 1px red) {
   .contact-band__heading { -webkit-text-stroke: 1px var(--color-coral-500); color: transparent; }
+  @media (min-width: 1024px) {
+    .contact-band__heading { -webkit-text-stroke-width: 1.5px; }
+  }
 }
 
 @media (min-width: 640px) {

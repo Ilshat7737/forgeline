@@ -12,6 +12,8 @@ function assertSingleOpen(expectedSlug: string) {
   const section = screen.getByRole("region", { name: "FROM STRATEGY TO A STABLE RELEASE." });
   expect(within(section).getAllByRole("region")).toHaveLength(1);
   for (const [index, button] of buttons.entries()) {
+    expect(screen.getByRole("button", { name: homeServices[index].homeTitle })).toBe(button);
+    expect(screen.getByRole("heading", { level: 3, name: homeServices[index].homeTitle })).toContain(button);
     const panel = document.getElementById(button.getAttribute("aria-controls")!);
     const open = homeServices[index].slug === expectedSlug;
     expect(panel).not.toBeNull();
@@ -33,7 +35,7 @@ describe("home services accordion", () => {
   it("keeps exactly one panel open through every service change and repeated activation", () => {
     render(<ServicesAccordion />);
     for (const service of homeServices) {
-      const toggle = screen.getByRole("button", { name: new RegExp(service.homeTitle) });
+      const toggle = screen.getByRole("button", { name: service.homeTitle });
       toggle.focus();
       fireEvent.click(toggle);
       assertSingleOpen(service.slug);

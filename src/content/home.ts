@@ -10,7 +10,7 @@ type FeaturedConcept = EditorialEntry & {
 type HomeContent = {
   hero: { eyebrow: string; lines: readonly [string, string, string]; supporting: string; primary: NavigationLink; secondary: NavigationLink; technologies: string; note: readonly string[] };
   about: { label: string; heading: string; body: string; note: string };
-  services: { label: string; heading: string; discuss: string; expand: string; collapse: string; all: NavigationLink };
+  services: { label: string; heading: string; discuss: string; all: NavigationLink };
   process: { heading: string; steps: readonly { title: string; body: string }[] };
   insights: { label: string; heading: string; status: string; entries: readonly EditorialEntry[] };
   work: { label: string; heading: string; conceptLabel: "CONCEPT"; viewLabel: string; all: NavigationLink; concepts: readonly FeaturedConcept[] };
@@ -35,7 +35,7 @@ export const home = {
   },
   services: {
     label: "SERVICES", heading: "FROM STRATEGY TO A STABLE RELEASE.",
-    discuss: "Discuss this service", expand: "Expand details", collapse: "Collapse details",
+    discuss: "Discuss this service",
     all: { label: "View all services", href: "/services" },
   },
   process: {

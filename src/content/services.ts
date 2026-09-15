@@ -1,8 +1,14 @@
+import type { NavigationLink } from "./navigation";
+import { navigation } from "./navigation";
+import { pages } from "./pages";
+
+export type ServiceGroupId = "product" | "engineering" | "systems" | "team";
+
 type ServiceBase = {
   slug: string;
   title: string;
   shortDescription: string;
-  group: "product" | "engineering" | "systems" | "team";
+  group: ServiceGroupId;
 };
 
 export type Service = ServiceBase & (
@@ -34,3 +40,61 @@ export const services = [
 export const homeServices = services
   .filter((service) => service.homeOrder !== null)
   .sort((a, b) => a.homeOrder - b.homeOrder);
+
+export type ServiceGroupContent = {
+  id: ServiceGroupId;
+  number: string;
+  title: string;
+  introduction: string;
+};
+
+export const serviceGroups = [
+  { id: "product", number: "01", title: "Product strategy and design", introduction: "Turn uncertain requirements into a direction your team can evaluate and build." },
+  { id: "engineering", number: "02", title: "Software engineering", introduction: "Build complete workflows with the frontend, backend and quality practices considered together." },
+  { id: "systems", number: "03", title: "AI, cloud and modernization", introduction: "Introduce new capabilities while keeping the system understandable and operable." },
+  { id: "team", number: "04", title: "People and ownership", introduction: "Build capability inside your organization as the product moves forward." },
+] as const satisfies readonly ServiceGroupContent[];
+
+export const serviceSituations = [
+  { id: "build", title: "Build a product", body: "Connect discovery, design, engineering and launch around a clear first outcome.", groups: ["product", "engineering"] },
+  { id: "improve", title: "Improve an existing system", body: "Remove the constraints affecting delivery, reliability or user experience.", groups: ["engineering", "systems"] },
+  { id: "strengthen", title: "Strengthen your team", body: "Add focused expertise while keeping priorities and product ownership inside your organization.", groups: ["team"] },
+] as const satisfies readonly { id: string; title: string; body: string; groups: readonly ServiceGroupId[] }[];
+
+export type ServiceSituationId = (typeof serviceSituations)[number]["id"];
+
+type ServicesPageContent = {
+  hero: { eyebrow: string; heading: string; emphasis: string; introduction: string; cta: NavigationLink };
+  selector: { heading: string; relevant: string };
+  discuss: string;
+  technology: { heading: string; body: string; names: readonly string[] };
+  principles: readonly { title: string; body: string }[];
+  cta: { heading: string; body: string; link: NavigationLink };
+};
+
+export const servicesPage = {
+  hero: {
+    eyebrow: "SERVICES",
+    heading: pages.services.heading,
+    emphasis: "PRODUCT NEEDS.",
+    introduction: "Bring us a new idea, a delivery challenge or a system that needs to change. Start with the problem; we will help define the right combination of skills.",
+    cta: navigation.contact,
+  },
+  selector: { heading: "WHERE ARE YOU NOW?", relevant: "Relevant to your situation" },
+  discuss: "Discuss this service",
+  technology: {
+    heading: "TOOLS FOLLOW THE PRODUCT.",
+    body: "We choose technologies around the product, the system you already operate and the skills your team needs to retain.",
+    names: ["React", "React Native", "Node.js", ".NET", "Python", "Go", "MongoDB", "AWS"],
+  },
+  principles: [
+    { title: "Clarity before activity", body: "Make assumptions, decisions and dependencies visible." },
+    { title: "Complete increments", body: "Review working behavior rather than disconnected task output." },
+    { title: "Ownership after release", body: "Include testing, deployment, diagnosis and knowledge transfer in delivery." },
+  ],
+  cta: {
+    heading: "NOT SURE WHERE TO START?",
+    body: "Describe the outcome you need and the constraints you already know. We can begin with a focused assessment.",
+    link: { label: "Tell us about the challenge", href: "/contact" },
+  },
+} as const satisfies ServicesPageContent;

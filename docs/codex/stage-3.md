@@ -4,6 +4,14 @@ Read `AGENTS.md`, spec §8, §12 (Services), §13, §14 and `docs/v1-content-bri
 approved visual direction. Stages 1–2 are in place: reuse tokens, UI primitives, `src/content/services.ts` and
 section patterns from Home. Do not duplicate primitives or the service list.
 
+## Stage 2 review fixes (do these first)
+
+1. `services-accordion.tsx`: remove the `sr-only` "Expand details"/"Collapse details" text inside the toggle. It
+   pollutes the h3/button name ("01Web developmentCollapse details") and "Collapse" is false for the open item,
+   which cannot close. `aria-expanded` already conveys state. Keep the `aria-hidden` number. Update tests.
+2. Contact band outlined heading: use `-webkit-text-stroke: 1.5px` at ≥ 1024px so the thin outline keeps ≥ 3:1
+   graphic legibility on plum-950.
+
 Build `/services` from components in `src/components/services/`, copy in `src/content/services.ts` (extend it):
 
 1. Page hero — dark plum, eyebrow SERVICES, h1 "CHOOSE THE SUPPORT YOUR PRODUCT NEEDS." with a flat coral block

@@ -4,6 +4,13 @@ Read `AGENTS.md`, spec §9, §11, §12 (Work), §13, §14 and `docs/v1-content-b
 approved visual direction. Stages 1–3 are in place: reuse tokens, primitives, `page-hero`, services data and the
 concept artwork components created for Home (`src/components/work/artwork/`).
 
+## Stage 3 review note
+
+Browser console on `/services` warns that a CSS chunk "was preloaded using link preload but not used within a few
+seconds". It comes from importing route CSS inside components (`page-hero.css`, `services.css`). For new Work styles,
+import the stylesheet once from the route (`src/app/work/page.tsx`) or `globals.css`, not from leaf components, and
+move the `page-hero.css` import to `globals.css`. Confirm the warning is gone in `next start`.
+
 Build `/work` from components in `src/components/work/`, copy in `src/content/work.ts`:
 
 1. Data — typed `WorkConcept` (spec §11) for the six concepts in brief §5. `relatedServices` are service slugs

@@ -7,14 +7,10 @@ import { InsightLinks } from "@/components/home/insight-links";
 import { FeaturedWork } from "@/components/home/featured-work";
 import { ContactBand } from "@/components/home/contact-band";
 import { pages } from "@/content/pages";
+import { pageMetadata } from "@/lib/metadata";
 import "@/styles/home.css";
 
-export const metadata: Metadata = {
-  title: pages.home.title,
-  description: pages.home.description,
-  alternates: { canonical: "/" },
-  openGraph: { title: pages.home.title, description: pages.home.description, url: "/", type: "website" },
-};
+export const metadata: Metadata = pageMetadata(pages.home, "/");
 
 export default function HomePage() {
   return (

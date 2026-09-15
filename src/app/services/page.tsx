@@ -7,14 +7,10 @@ import { ServiceGroup } from "@/components/services/service-group";
 import { TechnologyStrip } from "@/components/services/technology-strip";
 import { DeliveryPrinciples } from "@/components/services/delivery-principles";
 import { ServicesCta } from "@/components/services/services-cta";
+import { pageMetadata } from "@/lib/metadata";
 import "@/styles/services.css";
 
-export const metadata: Metadata = {
-  title: pages.services.title,
-  description: pages.services.description,
-  alternates: { canonical: "/services" },
-  openGraph: { title: pages.services.title, description: pages.services.description, url: "/services", type: "website" },
-};
+export const metadata: Metadata = pageMetadata(pages.services, "/services");
 
 export default function ServicesPage() {
   return (

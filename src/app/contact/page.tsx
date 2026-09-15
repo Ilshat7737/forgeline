@@ -5,14 +5,10 @@ import { PageHero } from "@/components/layout/page-hero";
 import { ContactSupport } from "@/components/contact/contact-support";
 import { ProjectEnquiryForm } from "@/components/contact/project-enquiry-form";
 import { resolveContactQuery, type ContactSearchParams } from "@/lib/contact-query";
+import { pageMetadata } from "@/lib/metadata";
 import "@/styles/contact.css";
 
-export const metadata: Metadata = {
-  title: pages.contact.title,
-  description: pages.contact.description,
-  alternates: { canonical: "/contact" },
-  openGraph: { title: pages.contact.title, description: pages.contact.description, url: "/contact", type: "website" },
-};
+export const metadata: Metadata = pageMetadata(pages.contact, "/contact");
 
 export default async function ContactPage({ searchParams }: { searchParams: Promise<ContactSearchParams> }) {
   const defaults = resolveContactQuery(await searchParams);

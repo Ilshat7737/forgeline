@@ -7,14 +7,10 @@ import { WorkCta } from "@/components/work/work-cta";
 import { WorkFilter, WorkFilterBoundary } from "@/components/work/work-filter";
 import { pages } from "@/content/pages";
 import { workConcepts, workPage } from "@/content/work";
+import { pageMetadata } from "@/lib/metadata";
 import "@/styles/work.css";
 
-export const metadata: Metadata = {
-  title: pages.work.title,
-  description: pages.work.description,
-  alternates: { canonical: "/work" },
-  openGraph: { title: pages.work.title, description: pages.work.description, url: "/work", type: "website" },
-};
+export const metadata: Metadata = pageMetadata(pages.work, "/work");
 
 export default function WorkPage() {
   return (

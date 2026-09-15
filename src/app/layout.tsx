@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { PageShell } from "@/components/layout/page-shell";
 import { pages } from "@/content/pages";
 import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/site-url";
 import "@/styles/globals.css";
 
 const display = Barlow_Condensed({
@@ -22,9 +23,11 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(getSiteUrl()),
   title: pages.home.title,
   description: pages.home.description,
+  openGraph: { siteName: site.name, locale: "en", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

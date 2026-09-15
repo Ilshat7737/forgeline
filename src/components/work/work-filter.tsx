@@ -1,8 +1,8 @@
 "use client";
 
-import { Component, useSyncExternalStore, type ReactNode } from "react";
+import { Component, useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { workCategories, workPage, type WorkFilterCategory } from "@/content/work";
-import { filterConcepts, parseCategory } from "@/lib/work-filter";
+import { filterConcepts, getFilterScrollOffset, parseCategory } from "@/lib/work-filter";
 import { ConceptGrid, type ConceptGridEntry } from "./concept-grid";
 import { WorkStatusMessage, type WorkStatus } from "./work-status";
 
@@ -32,13 +32,33 @@ export function WorkFilter({ entries, status = "ready", onRetry = () => window.l
   onRetry?: () => void;
 }) {
   const selected = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const rowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+    const update = () => {
+      const button = row.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+      row.parentElement?.setAttribute("data-overflow", String(row.scrollWidth > row.clientWidth));
+      if (!button) return;
+      const left = button.getBoundingClientRect().left - row.getBoundingClientRect().left + row.scrollLeft;
+      // Assign only the row's offset: instant, including with reduced motion.
+      row.scrollLeft = getFilterScrollOffset(row.scrollLeft, row.clientWidth, row.scrollWidth, left, button.offsetWidth);
+    };
+    update();
+    const observer = typeof ResizeObserver === "undefined" ? undefined : new ResizeObserver(update);
+    observer?.observe(row);
+    window.addEventListener("resize", update);
+    return () => { observer?.disconnect(); window.removeEventListener("resize", update); };
+  }, [selected]);
   const visible = filterConcepts(entries, selected);
   return (
     <>
-      <div className="work-filter" role="group" aria-label={workPage.filterLabel}>
+      <div className="work-filter__fade">
+      <div ref={rowRef} className="work-filter" role="group" aria-label={workPage.filterLabel}>
         {workCategories.map((category) => (
           <button key={category.id} type="button" aria-pressed={selected === category.id} aria-controls="concept-grid" onClick={() => selectCategory(category.id)}>{category.label}</button>
         ))}
+      </div>
       </div>
       <p className="work-filter__count" aria-live="polite" aria-atomic="true">
         {status === "ready" && `${workPage.showing} ${visible.length} ${visible.length === 1 ? workPage.singular : workPage.plural}`}

@@ -1,6 +1,20 @@
 import { describe, expect, it } from "vitest";
 import { workConcepts, type WorkCategory } from "@/content/work";
-import { filterConcepts, parseCategory } from "./work-filter";
+import { filterConcepts, getFilterScrollOffset, parseCategory } from "./work-filter";
+
+describe("filter row scroll offset", () => {
+  it("reveals an off-screen Operations button at a narrow viewport", () => {
+    expect(getFilterScrollOffset(0, 280, 548, 404, 120)).toBe(268);
+  });
+  it("preserves the offset when the button is already visible", () => {
+    expect(getFilterScrollOffset(200, 280, 548, 240, 100)).toBe(200);
+  });
+  it("scrolls back for an earlier selection and clamps both ends", () => {
+    expect(getFilterScrollOffset(268, 280, 548, 100, 100)).toBe(76);
+    expect(getFilterScrollOffset(268, 280, 548, 4, 60)).toBe(0);
+    expect(getFilterScrollOffset(0, 900, 548, 404, 120)).toBe(0);
+  });
+});
 
 describe("Work categories", () => {
   it.each<[WorkCategory, string[]]>([

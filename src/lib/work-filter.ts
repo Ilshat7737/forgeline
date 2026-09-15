@@ -10,3 +10,10 @@ export function parseCategory(param: string | null): WorkFilterCategory {
 export function filterConcepts<T extends { category: WorkCategory }>(concepts: readonly T[], category: WorkFilterCategory): readonly T[] {
   return category === "all" ? concepts : concepts.filter((concept) => concept.category === category);
 }
+
+/** Keep the selection inside the row, including space for the end fade. */
+export function getFilterScrollOffset(scrollLeft: number, viewportWidth: number, scrollWidth: number, buttonLeft: number, buttonWidth: number, padding = 24): number {
+  const visible = buttonLeft >= scrollLeft + padding && buttonLeft + buttonWidth <= scrollLeft + viewportWidth - padding;
+  const target = visible ? scrollLeft : buttonLeft - padding;
+  return Math.max(0, Math.min(target, scrollWidth - viewportWidth));
+}

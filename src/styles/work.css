@@ -1,6 +1,8 @@
 @layer components {
   .work-collection { padding-block: 2rem var(--layout-section-padding); background: var(--color-lavender-100); color: var(--color-plum-900); }
-  .work-filter { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.5rem 0.25rem 1rem; border-bottom: 1px solid var(--color-border-light); }
+  .work-filter__fade { position: relative; min-width: 0; }
+  .work-filter__fade[data-overflow="true"]::after { content: ""; position: absolute; inset: 0 0 1rem auto; width: 1.5rem; pointer-events: none; background: linear-gradient(to right, transparent, var(--color-lavender-100)); }
+  .work-filter { display: flex; gap: 0.5rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-behavior: auto; padding: 0.5rem 1.5rem 1rem 0.25rem; border-bottom: 1px solid var(--color-border-light); }
   .work-filter button, .work-reset { flex-shrink: 0; min-width: 44px; min-height: 44px; padding: 0.65rem 1.25rem; border: 1px solid var(--color-plum-900); font-size: 0.875rem; font-weight: 500; transition: color var(--motion-control) ease-in-out, background-color var(--motion-control) ease-in-out; }
   .work-filter button[aria-pressed="true"], .work-reset { background: var(--color-plum-900); color: var(--color-ivory); }
   .work-filter button:is(:hover, :focus-visible), .work-reset:is(:hover, :focus-visible) { background: var(--color-plum-800); color: var(--color-ivory); text-decoration: underline; text-underline-offset: 4px; }

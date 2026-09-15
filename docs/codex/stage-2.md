@@ -26,5 +26,16 @@ Build `/` with sections as separate components in `src/components/home/` and cop
 
 Page metadata per spec §15. Tests: accordion exposes exactly one open item and correct aria attributes.
 
+## Stage 1 review fixes (do these first)
+
+1. Footer `nav` reuses the `aria-label` "Main navigation" → duplicate landmark names. Add
+   `navigation.footerLabel = "Footer navigation"` and use it in `site-footer.tsx`.
+2. Mobile menu panel is only as tall as its links, so the footer shows beneath it on short pages. Make
+   `.mobile-menu__panel` fill the viewport below the header (`height: calc(100dvh - var(--layout-header-height))`).
+3. Fonts: spec asks Barlow Condensed 500–700 and Inter 400–700. Load Barlow `500`, `600`, `700`; Inter `400`–`700`
+   only if used — remove unused weights rather than adding them.
+4. Add `src/app/icon.svg` (coral "F." on plum-950, square) so `/favicon.ico` no longer 404s.
+5. Note: `--spacing` is 0.5rem, so Tailwind `p-1` = 8px, `p-2` = 16px. Keep this 8px-base convention consistently.
+
 Keep the header 84px overlay only if hero contrast holds. Check light-section contrast rules in AGENTS.md.
 Finish with lint, typecheck, test, build green. Report changed files and results.

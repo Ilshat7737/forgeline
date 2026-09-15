@@ -2,6 +2,8 @@ import { act, cleanup, fireEvent, render, screen, within } from "@testing-librar
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MobileMenu } from "./mobile-menu";
 
+vi.mock("next/navigation", () => ({ usePathname: () => "/services" }));
+
 let breakpointChange: (event: { matches: boolean }) => void;
 
 beforeEach(() => {
@@ -21,7 +23,7 @@ afterEach(() => {
 function renderMenu() {
   return render(
     <>
-      <MobileMenu pathname="/services" />
+      <MobileMenu />
       <main><a href="/work">Background link</a></main>
       <footer />
     </>,

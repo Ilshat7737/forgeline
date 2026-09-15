@@ -1,15 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { navigation } from "@/content/navigation";
 import { ButtonLink } from "@/components/ui/button-link";
 
-export function MobileMenu({ pathname }: { pathname: string }) {
+export function MobileMenu() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
+
+  // Keep shared header behavior inside Home's existing interactive boundary.
+  useEffect(() => {
+    const header = buttonRef.current?.closest("header");
+    if (!header) return;
+    function updateSticky() {
+      if (header) header.dataset.sticky = String(window.scrollY > 120);
+    }
+    updateSticky();
+    window.addEventListener("scroll", updateSticky, { passive: true });
+    return () => window.removeEventListener("scroll", updateSticky);
+  }, []);
+
+  useEffect(() => {
+    const links = buttonRef.current?.closest("header")?.querySelectorAll("a[data-header-link]");
+    links?.forEach((link) => {
+      if (link.getAttribute("href") === pathname) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }, [pathname]);
 
   function closeMenu() {
     setIsOpen(false);

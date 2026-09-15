@@ -14,7 +14,7 @@ export function SiteFooter() {
             <p className="mt-2 text-body-md font-medium">{site.footer.tagline}</p>
             <p className="mt-2 max-w-measure text-body-md text-lavender-100">{site.footer.description}</p>
           </div>
-          <nav aria-label={navigation.label} className="flex flex-col items-start lg:col-span-3">
+          <nav aria-label={navigation.footerLabel} className="flex flex-col items-start lg:col-span-3">
             {navigation.links.map((link) => (
               <Link key={link.href} href={link.href} className="nav-link">{link.label}</Link>
             ))}

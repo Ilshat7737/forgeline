@@ -9,7 +9,7 @@ import "@/styles/globals.css";
 
 const display = Barlow_Condensed({
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["500", "600", "700"],
   variable: "--font-barlow-condensed",
   display: "swap",
 });

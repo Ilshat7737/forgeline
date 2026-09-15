@@ -232,7 +232,7 @@
   .mobile-menu__panel {
     position: absolute;
     inset: 100% 0 auto;
-    max-height: calc(100dvh - var(--layout-header-height));
+    height: calc(100dvh - var(--layout-header-height));
     overflow-y: auto;
     overscroll-behavior: contain;
     background: var(--color-plum-950);

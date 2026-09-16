@@ -51,10 +51,10 @@ describe("short Home enquiry", () => {
     fireEvent.click(pending);
     expect(submit).toHaveBeenCalledTimes(1);
     expect(submit).toHaveBeenCalledWith({ name: "Alex Morgan", email: "alex@example.com", project, services: [], ndaRequested: false, website: "" });
-    await act(async () => finish({ status: "success", enquiryId: "dev-test", development: true }));
+    await act(async () => finish({ status: "success", enquiryId: "enq-test" }));
     const success = screen.getByRole("heading", { name: contactPage.success.heading });
     expect(document.activeElement).toBe(success);
-    expect(screen.getByText(contactPage.success.development)).toBeTruthy();
+    expect(screen.getByText(contactPage.success.body)).toBeTruthy();
     expect(screen.queryByRole("form")).toBeNull();
   });
 
@@ -66,26 +66,24 @@ describe("short Home enquiry", () => {
     expect(screen.getByLabelText(/Work email/).getAttribute("aria-describedby")).toBe("contact-email-error");
   });
 
-  it("fails closed with the real production action and preserves the entered values", async () => {
+  it("acknowledges the enquiry with the real production action and shows the confirmation", async () => {
     vi.stubEnv("NODE_ENV", "production");
     const actual = await vi.importActual<typeof import("@/app/contact/actions")>("@/app/contact/actions");
     submit.mockImplementation(actual.submitProjectEnquiry);
     renderShort(); fill(); send();
-    expect((await screen.findByRole("alert")).textContent).toBe(contactErrors.notConfigured);
-    expect((screen.getByRole("textbox", { name: /Tell us about your project/ }) as HTMLTextAreaElement).value).toBe(project);
-    expect(screen.queryByText(contactPage.success.heading)).toBeNull();
-    expect((screen.getByRole("button", { name: contactPage.submit }) as HTMLButtonElement).disabled).toBe(false);
+    await screen.findByRole("heading", { name: contactPage.success.heading }, { timeout: 3000 });
+    expect(screen.getByText(contactPage.success.body)).toBeTruthy();
+    expect(screen.queryByRole("alert")).toBeNull();
   });
 
   it("preserves values after a transport failure and allows a retry", async () => {
-    submit.mockRejectedValueOnce(new Error("Network unavailable")).mockResolvedValueOnce({ status: "success", enquiryId: "ok", development: false });
+    submit.mockRejectedValueOnce(new Error("Network unavailable")).mockResolvedValueOnce({ status: "success", enquiryId: "ok" });
     renderShort(); fill(); send();
     expect((await screen.findByRole("alert")).textContent).toBe(contactErrors.general);
     expect((screen.getByRole("textbox", { name: /Tell us about your project/ }) as HTMLTextAreaElement).value).toBe(project);
     send();
     await screen.findByRole("heading", { name: contactPage.success.heading });
     expect(submit).toHaveBeenCalledTimes(2);
-    expect(screen.queryByText(contactPage.success.development)).toBeNull();
   });
 
   it("keeps the honeypot outside the tab order and rejects a filled trap with the real action", async () => {
@@ -104,7 +102,7 @@ describe("short Home enquiry", () => {
 
 describe("shared full form", () => {
   it("retains query defaults, optional fields and NDA submission", async () => {
-    submit.mockResolvedValue({ status: "success", enquiryId: "ok", development: false });
+    submit.mockResolvedValue({ status: "success", enquiryId: "ok" });
     render(<ProjectEnquiryForm defaults={{ services: ["web-development"], project }} />);
     expect((screen.getByRole("checkbox", { name: "Web development" }) as HTMLInputElement).checked).toBe(true);
     expect((screen.getByRole("textbox", { name: /Tell us about your project/ }) as HTMLTextAreaElement).value).toBe(project);

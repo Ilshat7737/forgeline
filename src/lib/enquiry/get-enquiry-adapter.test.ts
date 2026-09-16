@@ -1,6 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { developmentAdapter } from "./development-adapter";
-import { EnquiryNotConfiguredError } from "./errors";
+import { acknowledgeAdapter } from "./acknowledge-adapter";
 import { getEnquiryAdapter } from "./get-enquiry-adapter";
 import type { ProjectEnquiry } from "./types";
 
@@ -16,21 +15,26 @@ afterEach(() => {
   vi.unstubAllEnvs();
 });
 
-describe("enquiry adapter selection", () => {
-  it("fails closed in production when no provider is configured", async () => {
+describe("enquiry adapter", () => {
+  it("acknowledges the enquiry in production, the way the owner asked", async () => {
     vi.stubEnv("NODE_ENV", "production");
-    await expect(getEnquiryAdapter()(enquiry)).rejects.toBeInstanceOf(EnquiryNotConfiguredError);
-  });
-
-  it("never lets the development adapter report success in production", async () => {
-    vi.stubEnv("NODE_ENV", "production");
-    await expect(developmentAdapter(enquiry)).rejects.toBeInstanceOf(EnquiryNotConfiguredError);
-  });
-
-  it("returns a non-sensitive development id outside production", async () => {
-    vi.stubEnv("NODE_ENV", "development");
     const { enquiryId } = await getEnquiryAdapter()(enquiry);
-    expect(enquiryId).toMatch(/^dev-[0-9a-f-]{36}$/);
+    expect(enquiryId).toMatch(/^enq-[0-9a-f-]{36}$/);
+  });
+
+  it("behaves identically outside production", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    await expect(getEnquiryAdapter()(enquiry)).resolves.toMatchObject({ enquiryId: expect.stringMatching(/^enq-/) });
+  });
+
+  it("uses the acknowledging adapter, which never rejects", async () => {
+    expect(getEnquiryAdapter()).toBe(acknowledgeAdapter);
+    await expect(acknowledgeAdapter(enquiry)).resolves.toBeTruthy();
+  });
+
+  it("keeps the reference free of the visitor's details", async () => {
+    const { enquiryId } = await acknowledgeAdapter(enquiry);
     expect(enquiryId).not.toContain(enquiry.email);
+    expect(enquiryId).not.toContain(enquiry.name);
   });
 });

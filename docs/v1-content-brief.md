@@ -250,7 +250,7 @@ All copy from spec §10. Additions from the copy map:
 | NDA checkbox label | I would like to discuss an NDA before sharing sensitive details. |
 | Required / optional indicator | Required / Optional |
 | Error summary heading | Check the highlighted fields. |
-| Production not configured error | Project enquiries are not available right now. Please try again later. |
+| Submission behaviour | At the owner's request the form always acknowledges: the server returns success after a short delay and the success screen promises a reply within 7 business days. Nothing is delivered or stored — see `docs/production-checklist.md`. The only visible failure is a transport error, which keeps the entered values and offers a retry. |
 
 Left column "process summary" (h2 **What happens next**):
 > We review your message and contact you to clarify the next step. If the work is a fit, we agree on the people who

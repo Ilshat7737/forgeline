@@ -15,7 +15,9 @@ the next one. Codex writes the code, except where the owner asked for Claude (R5
 | R8 | Approach and About as standalone routes | `docs/codex/redesign-8.md` | done — Codex wrote the code, then hit its usage limit before reporting; Claude verified and committed |
 | R9 | Repeating scroll-reveal animation (Claude, not Codex) | `docs/tasks/r9-scroll-animation.md` | done — CSS + one shared IntersectionObserver, repeats on every entry, legal documents excluded |
 
-All queued tasks are complete. Remaining launch work lives in `docs/production-checklist.md`.
+| R10 | A distinct hero artwork for every page | `docs/codex/redesign-10.md` | queued — for Codex once its usage limit resets (~20:18 on 2026-09-16) |
+
+Remaining launch work lives in `docs/production-checklist.md`.
 
 Launch command used for every stage:
 

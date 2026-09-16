@@ -1,7 +1,6 @@
 "use server";
 
 import { contactSchema } from "@/lib/contact-schema";
-import { EnquiryNotConfiguredError } from "@/lib/enquiry/errors";
 import { getEnquiryAdapter } from "@/lib/enquiry/get-enquiry-adapter";
 import type { EnquiryFieldErrors, EnquiryResult } from "@/lib/enquiry/types";
 import type { ContactFieldName } from "@/content/contact";
@@ -24,8 +23,8 @@ export async function submitProjectEnquiry(input: unknown): Promise<EnquiryResul
   }
   try {
     const result = await getEnquiryAdapter()(parsed.data);
-    return { status: "success", enquiryId: result.enquiryId, development: process.env.NODE_ENV === "development" };
-  } catch (error) {
-    return { status: "error", code: error instanceof EnquiryNotConfiguredError ? "not-configured" : "submission-failed" };
+    return { status: "success", enquiryId: result.enquiryId };
+  } catch {
+    return { status: "error", code: "submission-failed" };
   }
 }

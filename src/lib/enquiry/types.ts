@@ -13,7 +13,8 @@ export type ProjectEnquiry = {
 export type SubmitProjectEnquiry = (enquiry: ProjectEnquiry) => Promise<{ enquiryId: string }>;
 export type EnquiryFieldErrors = Partial<Record<ContactFieldName, string>>;
 export type EnquiryResult =
-  | { status: "success"; enquiryId: string; development: boolean }
+  | { status: "success"; enquiryId: string }
   | { status: "invalid"; fieldErrors: EnquiryFieldErrors }
-  | { status: "error"; code: "not-configured" | "submission-failed" }
+  /** Only a transport failure reaches the visitor: the server itself always acknowledges. */
+  | { status: "error"; code: "submission-failed" }
   | { status: "rejected" };

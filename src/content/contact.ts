@@ -59,8 +59,7 @@ export const contactErrors = {
   services: "Select one of the listed services.",
   ndaRequested: "Use the checkbox to request an NDA.",
   general: "We could not send your message. Your information is still here, so you can try again.",
-  notConfigured: "Project enquiries are not available right now. Please try again later.",
-} as const satisfies Record<ContactFieldName | "general" | "notConfigured", string>;
+} as const satisfies Record<ContactFieldName | "general", string>;
 
 export const contactPage = {
   hero: {
@@ -85,10 +84,9 @@ export const contactPage = {
   honeypot: "Website",
   success: {
     heading: "Thanks. Your project brief has been received.",
-    body: "We will review the context you shared and contact you about the next step.",
+    body: "We will review the context you shared and get back to you within 7 business days.",
     primary: { label: "Explore our work", href: "/work" },
     secondary: { label: "Back to home", href: "/" },
-    development: "Development submission — not delivered",
   },
 } as const;
 

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { WorkCategory } from "@/content/work";
 
-export type ConceptGridEntry = { id: string; category: WorkCategory; content: ReactNode };
+export type ConceptGridEntry = { id: string; category: WorkCategory; featured: boolean; content: ReactNode };
 
 export function ConceptGrid({ entries, visibleIds }: { entries: readonly ConceptGridEntry[]; visibleIds: readonly string[] }) {
   return (

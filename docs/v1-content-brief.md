@@ -97,12 +97,15 @@ Hero, filters, empty text and CTA from spec §9. Additional state copy:
 
 - Loading: **Loading concepts…**
 - Error: **We could not load this content. Please try again.** Action: **Try again**
-- Reset (shown in empty state): **Show all concepts**
+- Reset (shown in empty state): **Show featured concepts**
 - Under each expanded concept: **No delivery metrics or client outcomes are asserted for this concept.**
 
 Card CTA: **View concept** (spec). Expanded section CTA: **Discuss a similar challenge** (spec).
 
 ### Concepts
+
+The default `all` filter is labelled **Featured** and shows only the original six concepts (`featured: true`), in their original order. The eight additions below have `featured: false` and appear only in their category filters. While Featured is selected, show: **Featured selection. Use the category filters to see all 14 concepts.** All fourteen expanded sections remain available by fragment. Category counts are Web 4, Mobile 3, Desktop 3 and Operations 4, reflecting the original distribution plus two additions per category. Each card and expanded section keeps the CONCEPT label and the disclaimer above (28 labels and 28 disclaimers in the complete DOM).
+
 
 Summary and category come from the spec table. Expanded-section content:
 
@@ -147,6 +150,86 @@ Summary and category come from the spec table. Expanded-section content:
 - Proposed direction: The concept makes work stages and waiting time visible while preserving context about scope, dependencies and rework.
 - Questions to validate: Which stage accumulates waiting work? / Does a process change improve flow without moving problems elsewhere?
 - Relevant services: `business-analysis`, `cloud-devops`
+
+**`knowledge-library`** — Web (category only)
+- Title: Knowledge library
+- Summary: Find shared guidance and understand which source to use.
+- Heading: Give shared knowledge a clear place to live
+- The scenario: Teams collect guidance across disconnected documents, making it difficult to find the relevant explanation and understand its scope.
+- Proposed direction: The concept combines topic browsing, focused search and a reading pane that keeps source context beside the guidance.
+- Questions to validate: Can a reader find guidance using the language of their task? / Can they tell which source applies to their situation?
+- Relevant services: `web-development`, `ux-ui-design`, `knowledge-transfer`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative knowledge library with topic navigation, sample search results and a source-aware reading pane.
+
+**`service-configurator`** — Web (category only)
+- Title: Service configurator
+- Summary: Explore compatible options and review a configuration before submitting it.
+- Heading: Make product choices understandable before submission
+- The scenario: Users configuring a software service need to understand how their choices fit together before they send a request.
+- Proposed direction: The concept pairs selectable modules with a live configuration outline, explaining dependencies and preserving choices while users explore alternatives.
+- Questions to validate: Can a user explain why an option requires another module? / Can they revise a choice without losing the rest of the configuration?
+- Relevant services: `web-development`, `product-design`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative service configurator with sample modules, a dependency map and a configuration summary.
+
+**`offline-field-notes`** — Mobile (category only)
+- Title: Offline field notes
+- Summary: Capture observations and understand what is stored locally or ready to sync.
+- Heading: Keep captured notes understandable across connection changes
+- The scenario: People recording observations on the move may lose connectivity or leave a note unfinished when interrupted.
+- Proposed direction: The concept provides a focused capture canvas, a local draft state and an explicit comparison when a shared note conflicts with a local edit.
+- Questions to validate: Can a user tell whether a note is stored locally or shared? / Can they resolve a conflicting edit without discarding an observation?
+- Relevant services: `mobile-development`, `ux-ui-design`, `qa-automated-testing`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative device-free note capture canvas with a sample observation, local draft indicator and sync comparison.
+
+**`mobile-access-pass`** — Mobile (category only)
+- Title: Mobile access pass
+- Summary: Present a workspace invitation and understand the scope of access it grants.
+- Heading: Make an invitation and its permissions easy to inspect
+- The scenario: People joining a shared software workspace need to check the destination and permissions before accepting an invitation on mobile.
+- Proposed direction: The concept places the invitation beside a readable access pass, showing the workspace, role and controls for leaving the shared space.
+- Questions to validate: Can a recipient identify the workspace and role before joining? / Can they find how to leave the workspace when access is no longer needed?
+- Relevant services: `mobile-development`, `product-design`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative device-free workspace invitation and access pass with a sample account and clearly listed permissions.
+
+**`data-comparison-desk`** — Desktop (category only)
+- Title: Data comparison desk
+- Summary: Compare local datasets and inspect differences before choosing what to keep.
+- Heading: Give local data differences a readable structure
+- The scenario: People comparing local data files need to understand changed fields without losing the relationship between records.
+- Proposed direction: The concept aligns records in a split comparison, highlights field differences and provides a separate preview of the chosen values before export.
+- Questions to validate: Can a user distinguish a missing value from a changed value? / Can they inspect the chosen values before writing an export?
+- Relevant services: `desktop-development`, `ux-ui-design`, `qa-automated-testing`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative desktop data comparison with aligned sample records, highlighted differences and a merged-value preview.
+
+**`local-environment-manager`** — Desktop (category only)
+- Title: Local environment manager
+- Summary: Inspect local development environments and choose which settings to apply.
+- Heading: Keep local environment choices explicit
+- The scenario: Developers working across software projects need to understand which local settings belong to each environment before switching context.
+- Proposed direction: The concept combines an environment map with grouped settings and an explicit change preview, keeping project-specific configuration separate from shared defaults.
+- Questions to validate: Can a developer identify which settings are shared across environments? / Can they review the effect of a switch before applying it?
+- Relevant services: `desktop-development`, `software-architecture`, `cloud-devops`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative local environment manager with a sample project map, grouped settings and a configuration change preview.
+
+**`team-capacity-planner`** — Operations (category only)
+- Title: Team capacity planner
+- Summary: Explore work allocation while keeping availability and competing commitments visible.
+- Heading: Make allocation choices visible before committing
+- The scenario: Teams planning shared work need to see how proposed assignments overlap with existing commitments and available capacity.
+- Proposed direction: The concept uses an allocation matrix and an unassigned work tray, allowing planners to compare draft arrangements before sharing a plan.
+- Questions to validate: Can a planner identify overlapping commitments for a team? / Can they distinguish a draft assignment from an agreed commitment?
+- Relevant services: `business-analysis`, `web-development`, `product-design`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative team allocation matrix with sample work blocks, an unassigned work tray and a draft plan summary.
+
+**`system-dependency-map`** — Operations (category only)
+- Title: System dependency map
+- Summary: Trace service relationships and inspect the context around a proposed system change.
+- Heading: Keep system dependencies close to change decisions
+- The scenario: People maintaining connected software need to understand which services depend on one another before planning a change.
+- Proposed direction: The concept pairs a navigable service graph with relationship details and a change-scope overlay, keeping assumptions visible for review.
+- Questions to validate: Can an operator trace the dependants of a selected service? / Can they distinguish a confirmed relationship from one that needs review?
+- Relevant services: `software-architecture`, `cloud-devops`, `legacy-modernization`
+- Image: native HTML/CSS/SVG, aspect ratio 2.15; alt: Illustrative system dependency graph with sample services, a selected relationship and a proposed change-scope panel.
 
 Concept artwork: original HTML/CSS/SVG compositions (or original raster images generated in-repo). Placeholder data
 inside artwork must be neutral and obviously sample (e.g. "Account A", round sample figures); no real brands.

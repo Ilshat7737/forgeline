@@ -10,8 +10,8 @@ the next one. Codex writes the code, except where the owner asked for Claude (R5
 | R3 | Services page | `docs/codex/redesign-3.md` | done — `062cc16` |
 | R4 | Work page | `docs/codex/redesign-4.md` | done — `617e196` |
 | R5 | Contact, legal pages, not-found, heading case | `docs/codex/redesign-5.md` | done — `4a0a4a4` (by Claude: Codex hit its usage limit) |
-| R6 | Cleanup, OG image, Services grid rhythm, final sweep | `docs/codex/redesign-6.md` | queued — scheduled to start after the Codex limit reset (~14:57 on 2026-09-16) |
-| R7 | Eight additional Work concepts behind the category filters | `docs/codex/redesign-7.md` | queued — starts after R6 is reviewed and committed |
+| R6 | Cleanup, OG image, Services grid rhythm, final sweep | `docs/codex/redesign-6.md` | done — `89e5dd6` |
+| R7 | Eight additional Work concepts behind the category filters | `docs/codex/redesign-7.md` | running — started 2026-09-16 after R6 was committed |
 | R8 | Approach and About as standalone routes | `docs/codex/redesign-8.md` | queued — starts after R7 is reviewed and committed |
 | R9 | Repeating scroll-reveal animation (Claude, not Codex) | `docs/tasks/r9-scroll-animation.md` | queued — last task, starts after R8 is reviewed and committed |
 

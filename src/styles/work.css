@@ -17,6 +17,8 @@
   .work-filter button, .work-reset { flex-shrink: 0; min-width: 44px; min-height: 44px; padding: 0.65rem 1.25rem; border: 1px solid var(--color-border-control); border-radius: var(--radius-pill); background: var(--color-surface-white); color: var(--color-ink); font-size: 0.875rem; font-weight: 600; transition: color var(--motion-control) ease-in-out, background-color var(--motion-control) ease-in-out; }
   .work-filter button[aria-pressed="true"], .work-reset { background: var(--color-plum-900); color: var(--color-text-on-dark); }
   .work-filter button:is(:hover, :focus-visible), .work-reset:is(:hover, :focus-visible) { background: var(--color-plum-800); color: var(--color-text-on-dark); text-decoration: underline; text-underline-offset: 4px; }
+  .work-filter__summary { min-width: 0; }
+  .work-filter__note { margin-top: 0.25rem; color: var(--color-text-muted); font-size: var(--type-body-sm); }
   .work-filter__count { min-height: 1.6em; color: var(--color-text-muted); font-size: var(--type-body-sm); }
   .work-status { padding: var(--layout-card-padding); border: 1px solid var(--color-border-light); border-radius: var(--radius-card); background: var(--color-surface-white); color: var(--color-ink); box-shadow: var(--shadow-soft); }
   .work-status p { margin-bottom: 1rem; }

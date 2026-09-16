@@ -7,8 +7,8 @@ export function parseCategory(param: string | null): WorkFilterCategory {
   }
 }
 
-export function filterConcepts<T extends { category: WorkCategory }>(concepts: readonly T[], category: WorkFilterCategory): readonly T[] {
-  return category === "all" ? concepts : concepts.filter((concept) => concept.category === category);
+export function filterConcepts<T extends { category: WorkCategory; featured: boolean }>(concepts: readonly T[], category: WorkFilterCategory): readonly T[] {
+  return concepts.filter((concept) => category === "all" ? concept.featured : concept.category === category);
 }
 
 /** Keep the selection inside the row, including space for the end fade. */

@@ -53,6 +53,10 @@ const extra = [
   ['Submission failure text on 8% error tint, white / lavender (minimum)', 'error-strong', [mix('error-strong', 'surface-white', 0.08), mix('error-strong', 'surface-lavender', 0.08)]],
   ['OG wordmark on darkest glow stop', 'plum-900', ['#f7d5d0', '#e6daf5']],
   ['OG wordmark dot on darkest glow stop', 'coral-700', ['#f7d5d0', '#e6daf5']],
+  ['Additional Work artwork: ink on white / lavender', 'ink', ['surface-white', 'surface-lavender']],
+  ['Additional Work artwork: light text on plum panels', 'text-on-dark', ['plum-950', 'plum-900', 'plum-800']],
+  ['Additional Work artwork: plum text on coral tiles', 'plum-900', ['surface-coral']],
+  ['Additional Work artwork: lavender graph lines on plum', 'lavender-300', ['plum-950', 'plum-900']],
 ];
 console.log('\n| Additional pairing | Minimum contrast |\n| --- | ---: |');
 for (const [name, foreground, backgrounds] of extra) console.log(`| ${name} | ${measure(foreground, backgrounds)} |`);

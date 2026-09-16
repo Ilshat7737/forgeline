@@ -61,9 +61,12 @@ export function WorkFilter({ entries, status = "ready", onRetry = () => window.l
             ))}
           </div>
         </div>
-        <p className="work-filter__count" aria-live="polite" aria-atomic="true">
-          {status === "ready" && `${workPage.showing} ${visible.length} ${visible.length === 1 ? workPage.singular : workPage.plural}`}
-        </p>
+        <div className="work-filter__summary">
+          <p className="work-filter__count" aria-live="polite" aria-atomic="true">
+            {status === "ready" && `${workPage.showing} ${visible.length} ${visible.length === 1 ? workPage.singular : workPage.plural}`}
+          </p>
+          {status === "ready" && selected === "all" && <p className="work-filter__note">{workPage.featuredNote}</p>}
+        </div>
       </div>
       <WorkStatusMessage status={status} onRetry={onRetry} />
       {status === "ready" && visible.length === 0 && (

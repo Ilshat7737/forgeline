@@ -1,3 +1,5 @@
+import { KnowledgeLibraryArtwork, ServiceConfiguratorArtwork, OfflineNotesArtwork, MobileAccessArtwork, DataComparisonArtwork, LocalEnvironmentArtwork, TeamCapacityArtwork, SystemDependencyArtwork } from "./additional-concept-artwork";
+import "./additional-artwork.css";
 import { ArrowIcon } from "@/components/ui/arrow-icon";
 import type { CSSProperties, ReactNode } from "react";
 import { workArtwork } from "@/content/work-artwork";
@@ -82,6 +84,14 @@ const compositions = {
   "creative-production-tool": CreativeArtwork,
   "asset-processing-console": ProcessingArtwork,
   "delivery-flow-workspace": DeliveryArtwork,
+  "knowledge-library": KnowledgeLibraryArtwork,
+  "service-configurator": ServiceConfiguratorArtwork,
+  "offline-field-notes": OfflineNotesArtwork,
+  "mobile-access-pass": MobileAccessArtwork,
+  "data-comparison-desk": DataComparisonArtwork,
+  "local-environment-manager": LocalEnvironmentArtwork,
+  "team-capacity-planner": TeamCapacityArtwork,
+  "system-dependency-map": SystemDependencyArtwork,
 } satisfies Record<WorkConceptId, () => ReactNode>;
 
 export function ConceptArtwork({ id }: { id: WorkConceptId }) {

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { workConcepts } from "@/content/work";
 import { contactProjectSuggestion } from "@/content/contact";
 import { resolveContactQuery } from "./contact-query";
 
@@ -8,9 +9,9 @@ describe("contact query resolution", () => {
     expect(resolveContactQuery({ service: "knowledge-transfer" }).services).toEqual(["team-augmentation"]);
   });
 
-  it("suggests project text for a known concept id", () => {
-    expect(resolveContactQuery({ project: "workflow-automation" }).project)
-      .toBe(contactProjectSuggestion("Workflow automation"));
+  it.each(workConcepts)("suggests project text for $id", (concept) => {
+    expect(resolveContactQuery({ project: concept.id }).project)
+      .toBe(contactProjectSuggestion(concept.title));
   });
 
   it("resolves service and project together", () => {

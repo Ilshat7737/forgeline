@@ -8,23 +8,40 @@ import { ConceptSection } from "./concept-section";
 import { ConceptCard } from "./concept-card";
 import WorkPage from "@/app/work/page";
 
-const entries = workConcepts.map((concept) => ({ id: concept.id, category: concept.category, content: <ConceptCard concept={concept} artwork={null} /> }));
+const entries = workConcepts.map((concept) => ({ id: concept.id, category: concept.category, featured: concept.featured, content: <ConceptCard concept={concept} artwork={null} /> }));
 
 afterEach(() => { cleanup(); window.history.replaceState(null, "", "/work"); });
 
 describe("Work filter", () => {
-  it("server-renders All and hydrates the URL category without a mismatch", async () => {
+  it.each([ ["Web", 4], ["Mobile", 3], ["Desktop", 3], ["Operations", 4] ] as const)("shows an honest count for %s and preserves every card in the DOM", (label, count) => {
+    render(<WorkFilter entries={entries} />);
+    fireEvent.click(screen.getByRole("button", { name: label }));
+    expect(screen.getAllByRole("article")).toHaveLength(count);
+    expect(screen.getAllByRole("article", { hidden: true })).toHaveLength(14);
+    expect(screen.getByText(`Showing ${count} concepts`)).toBeTruthy();
+    expect(screen.queryByText(workPage.featuredNote)).toBeNull();
+    expect(screen.getAllByRole("button", { pressed: true })).toHaveLength(1);
+    expect(screen.getByRole("button", { name: label, pressed: true })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Featured" }));
+    expect(screen.getAllByRole("article")).toHaveLength(6);
+    expect(screen.getByText(workPage.featuredNote)).toBeTruthy();
+  });
+
+  it("server-renders Featured and hydrates the URL category without a mismatch", async () => {
     window.history.replaceState({ retained: true }, "", "/work?category=mobile");
     const container = document.createElement("div");
     document.body.append(container);
     container.innerHTML = renderToString(<WorkFilter entries={entries} />);
     expect(within(container).getAllByRole("article")).toHaveLength(6);
-    expect(within(container).getByRole("button", { name: "All" }).getAttribute("aria-pressed")).toBe("true");
+    expect(within(container).getByRole("button", { name: "Featured" }).getAttribute("aria-pressed")).toBe("true");
+    expect(container.querySelectorAll(".concept-grid > li")).toHaveLength(14);
+    expect(within(container).getByText(workPage.featuredNote)).toBeTruthy();
     const errors: unknown[] = [];
     let root: ReturnType<typeof hydrateRoot>;
     await act(async () => { root = hydrateRoot(container, <WorkFilter entries={entries} />, { onRecoverableError: (error) => errors.push(error) }); });
     expect(errors).toEqual([]);
-    expect(within(container).getAllByRole("article")).toHaveLength(1);
+    expect(within(container).queryByText(workPage.featuredNote)).toBeNull();
+    expect(within(container).getAllByRole("article")).toHaveLength(3);
     expect(within(container).getByRole("button", { name: "Mobile" }).getAttribute("aria-pressed")).toBe("true");
     await act(async () => root.unmount());
     container.remove();
@@ -38,19 +55,19 @@ describe("Work filter", () => {
     fireEvent.click(screen.getByRole("button", { name: "Mobile" }));
     expect(replace).toHaveBeenLastCalledWith({ retained: true }, "", "/work?source=example&category=mobile#workflow-automation");
     expect(push).not.toHaveBeenCalled();
-    expect(screen.getAllByRole("article")).toHaveLength(1);
-    expect(screen.getByText("Showing 1 concept").getAttribute("aria-live")).toBe("polite");
+    expect(screen.getAllByRole("article")).toHaveLength(3);
+    expect(screen.getByText("Showing 3 concepts").getAttribute("aria-live")).toBe("polite");
     for (const concept of workConcepts) {
       const section = screen.getByRole("region", { name: concept.heading });
       expect(section.id).toBe(concept.id);
       expect(within(section).getByText(workPage.disclaimer)).toBeTruthy();
     }
-    fireEvent.click(screen.getByRole("button", { name: "All" }));
+    fireEvent.click(screen.getByRole("button", { name: "Featured" }));
     expect(window.location.search).toBe("?source=example");
     expect(screen.getAllByRole("article")).toHaveLength(6);
   });
 
-  it("falls back to All for invalid values and responds to browser history changes", () => {
+  it("falls back to Featured for invalid values and responds to browser history changes", () => {
     window.history.replaceState(null, "", "/work?category=invalid");
     render(<WorkFilter entries={entries} />);
     expect(screen.getAllByRole("article")).toHaveLength(6);
@@ -59,7 +76,7 @@ describe("Work filter", () => {
       window.dispatchEvent(new PopStateEvent("popstate"));
     });
     expect(screen.getByRole("button", { name: "Desktop" }).getAttribute("aria-pressed")).toBe("true");
-    expect(screen.getAllByRole("article")).toHaveLength(1);
+    expect(screen.getAllByRole("article")).toHaveLength(3);
   });
 
   it("offers a working reset when a category is empty", () => {
@@ -105,17 +122,23 @@ describe("Work composition", () => {
   it("keeps concept disclosure, labelled artwork and contact links in every card and detail", () => {
     render(<WorkPage />);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    expect(document.querySelectorAll(".concept-card")).toHaveLength(14);
+    expect(document.querySelectorAll(".concept-section")).toHaveLength(14);
+    expect(screen.getAllByText("CONCEPT")).toHaveLength(28);
+    expect(screen.getAllByText(workPage.disclaimer)).toHaveLength(28);
+    const ids = Array.from(document.querySelectorAll("[id]"), (element) => element.id);
+    expect(new Set(ids).size).toBe(ids.length);
     for (const concept of workConcepts) {
-      const card = screen.getByRole("article", { name: concept.title });
+      const card = document.getElementById(`card-${concept.id}`)!.closest("article")!;
       const detail = screen.getByRole("region", { name: concept.heading });
       for (const container of [card, detail]) {
         expect(within(container).getByText("CONCEPT")).toBeTruthy();
         expect(within(container).getByText(workPage.disclaimer)).toBeTruthy();
-        expect(within(container).getAllByRole("img")).toHaveLength(1);
-        expect(within(container).getByRole("img").getAttribute("aria-label")).toBe(concept.image.alt);
+        expect(within(container).getAllByRole("img", { hidden: true })).toHaveLength(1);
+        expect(within(container).getByRole("img", { hidden: true }).getAttribute("aria-label")).toBe(concept.image.alt);
         expect(container.querySelector('[role="img"] > [aria-hidden="true"]')).toBeTruthy();
       }
-      expect(within(card).getByRole("link").getAttribute("href")).toBe(`#${concept.id}`);
+      expect(within(card).getByRole("link", { hidden: true }).getAttribute("href")).toBe(`#${concept.id}`);
       expect(within(detail).getByRole("link", { name: workPage.discuss }).getAttribute("href")).toBe(`/contact?project=${concept.id}`);
       expect(Array.from(detail.querySelectorAll('.concept-section__services a'), (link) => link.getAttribute("href")))
         .toEqual(concept.relatedServices.map((slug) => `/contact?service=${slug}`));

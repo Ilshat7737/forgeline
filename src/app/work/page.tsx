@@ -25,11 +25,12 @@ export default function WorkPage() {
           <WorkFilter entries={workConcepts.map((concept, index) => ({
             id: concept.id,
             category: concept.category,
-            content: <ConceptCard concept={concept} surface={conceptSurfaces[index]} artwork={<ConceptArtwork id={concept.id} />} />,
+            featured: concept.featured,
+            content: <ConceptCard concept={concept} surface={conceptSurfaces[index % conceptSurfaces.length]} artwork={<ConceptArtwork id={concept.id} />} />,
           }))} />
         </WorkFilterBoundary>
       </section>
-      {workConcepts.map((concept, index) => <ConceptSection key={concept.id} concept={concept} surface={conceptSurfaces[index]} artwork={<ConceptArtwork id={concept.id} />} />)}
+      {workConcepts.map((concept, index) => <ConceptSection key={concept.id} concept={concept} surface={conceptSurfaces[index % conceptSurfaces.length]} artwork={<ConceptArtwork id={concept.id} />} />)}
       <WorkCta />
     </div>
   );

@@ -1,16 +1,20 @@
 import { servicesPage } from "@/content/services";
+import { Card, type CardSurface } from "@/components/ui/card";
+import { Icon, type IconName } from "@/components/ui/icon";
+
+const surfaces: readonly CardSurface[] = ["white", "lavender", "dark"];
+const icons: readonly IconName[] = ["scan", "cube", "users"];
 
 export function DeliveryPrinciples() {
   return (
-    <div className="delivery-principles py-section" data-surface="light">
-      <div className="site-container delivery-principles__grid">
-        {servicesPage.principles.map((principle) => (
-          <section key={principle.title}>
-            <h2 className="font-display text-heading-md font-semibold">{principle.title}</h2>
-            <p>{principle.body}</p>
-          </section>
-        ))}
-      </div>
+    <div className="delivery-principles">
+      {servicesPage.principles.map((principle, index) => (
+        <Card as="section" key={principle.title} surface={surfaces[index]} shadow="soft">
+          <Icon name={icons[index]} />
+          <h2>{principle.title}</h2>
+          <p>{principle.body}</p>
+        </Card>
+      ))}
     </div>
   );
 }

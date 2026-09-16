@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { pages } from "@/content/pages";
-import { serviceGroups, servicesPage } from "@/content/services";
-import { PageHero } from "@/components/layout/page-hero";
+import { serviceGroups } from "@/content/services";
+import { ServicesHero } from "@/components/services/services-hero";
 import { ServiceSelector } from "@/components/services/service-selector";
 import { ServiceGroup } from "@/components/services/service-group";
 import { TechnologyStrip } from "@/components/services/technology-strip";
@@ -14,12 +14,12 @@ export const metadata: Metadata = pageMetadata(pages.services, "/services");
 
 export default function ServicesPage() {
   return (
-    <>
-      <PageHero {...servicesPage.hero} />
+    <div className="site-container services-bento" data-surface="canvas">
+      <ServicesHero />
       <ServiceSelector groups={serviceGroups.map((group) => ({ id: group.id, content: <ServiceGroup group={group} /> }))} />
       <TechnologyStrip />
       <DeliveryPrinciples />
       <ServicesCta />
-    </>
+    </div>
   );
 }

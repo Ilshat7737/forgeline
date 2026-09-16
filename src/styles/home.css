@@ -2,9 +2,6 @@
   .home-bento { --home-gap: var(--layout-gutter); display: grid; gap: var(--home-gap); padding-top: 1rem; padding-bottom: 2rem; }
   .home-bento > *, .home-bento a > *, .home-bento section > * { min-width: 0; }
   .home-bento h2, .home-bento h3 { font-weight: 700; letter-spacing: var(--type-heading-tracking); line-height: 1.2; }
-  /* Preserve the source strings while giving the new design sentence-case headings. */
-  .home-bento .section-heading__title, .home-hero__heading span, .about-card h2 span, .process-step h3, .home-contact h2 { text-transform: lowercase; }
-  .home-bento .section-heading__title::first-letter, .home-hero__heading span::first-letter, .about-card h2 span::first-letter, .process-step h3::first-letter, .home-contact h2::first-letter { text-transform: uppercase; }
   .home-section { padding-top: clamp(1.5rem, 3vw, 2.75rem); }
   .home-section__link { margin-top: 1rem; font-size: var(--type-body-sm); }
   .home-bento .section-heading__title { text-wrap: initial; }

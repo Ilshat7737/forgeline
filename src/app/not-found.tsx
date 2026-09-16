@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Card } from "@/components/ui/card";
+import { PillLabel } from "@/components/ui/pill-label";
 import { notFound } from "@/content/pages";
+import "@/styles/not-found.css";
 
 export const metadata: Metadata = {
   title: notFound.title,
@@ -10,13 +13,16 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="site-container py-section">
-      <h1 className="font-display text-display-lg font-bold uppercase">{notFound.heading}</h1>
-      <p className="mt-4 max-w-measure text-body-lg">{notFound.description}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <ButtonLink href={notFound.primary.href}>{notFound.primary.label}</ButtonLink>
-        <ButtonLink href={notFound.secondary.href} variant="secondary">{notFound.secondary.label}</ButtonLink>
-      </div>
+    <div className="site-container not-found" data-surface="canvas">
+      <Card surface="white" padding="lg" shadow="card" className="not-found__card">
+        <PillLabel variant="tag">{notFound.code}</PillLabel>
+        <h1>{notFound.heading}</h1>
+        <p>{notFound.description}</p>
+        <div className="not-found__actions">
+          <ButtonLink href={notFound.primary.href} variant="primary-dark">{notFound.primary.label}</ButtonLink>
+          <ButtonLink href={notFound.secondary.href} variant="quiet">{notFound.secondary.label}</ButtonLink>
+        </div>
+      </Card>
     </div>
   );
 }

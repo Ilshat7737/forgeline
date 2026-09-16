@@ -1,32 +1,37 @@
 @layer components {
-  .legal-area { padding-block: var(--layout-section-padding); background: var(--color-lavender-100); color: var(--color-plum-900); }
-  .legal-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+  .legal-bento { display: grid; gap: var(--layout-gutter); padding-top: 1rem; padding-bottom: 2rem; }
+  .legal-bento > *, .legal-panel > * { min-width: 0; }
+  .legal-bento h1, .legal-bento h2 { font-weight: 700; letter-spacing: var(--type-heading-tracking); line-height: 1.2; }
 
-  .legal-contents__title { font-size: var(--type-label); line-height: var(--leading-label); letter-spacing: var(--type-label-tracking); text-transform: uppercase; font-weight: 600; }
-  .legal-contents ol { margin-top: 1rem; border-top: 1px solid var(--color-border-light); counter-reset: legal; }
-  .legal-contents li { border-bottom: 1px solid var(--color-border-light); }
-  .legal-contents a { display: flex; align-items: center; gap: 1rem; min-height: 44px; padding-block: 0.5rem; font-size: 0.9375rem; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; transition: text-decoration-color var(--motion-control) ease-in-out; }
-  .legal-contents a::before { counter-increment: legal; content: counter(legal, decimal-leading-zero); flex-shrink: 0; width: 1.5rem; font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+  .legal-hero { display: flex; flex-direction: column; align-items: flex-start; padding-block: clamp(2rem, 4vw, 3.5rem); }
+  .legal-hero h1 { margin-block: 1.5rem 1rem; font-size: clamp(2rem, 3.5vw, 3.25rem); line-height: 1.1; letter-spacing: -0.045em; }
+  .legal-hero__intro { max-width: 60ch; font-size: var(--type-body-lg); color: var(--surface-muted); }
+
+  .legal-panel { display: grid; gap: var(--space-8); align-items: start; }
+  .legal-contents__title { font-size: var(--type-label); line-height: var(--leading-label); letter-spacing: var(--type-label-tracking); text-transform: uppercase; font-weight: 600; color: var(--surface-muted); }
+  .legal-contents ol { margin-top: 0.75rem; counter-reset: legal; }
+  .legal-contents li + li { border-top: 1px solid var(--surface-border); }
+  .legal-contents a { display: flex; align-items: center; gap: 0.75rem; min-height: 44px; padding-block: 0.5rem; font-size: var(--type-body-sm); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; transition: text-decoration-color var(--motion-control) ease-in-out; }
+  .legal-contents a::before { counter-increment: legal; content: counter(legal, decimal-leading-zero); flex-shrink: 0; width: 1.5rem; font-size: var(--type-label); font-variant-numeric: tabular-nums; color: var(--surface-muted); }
   .legal-contents a:is(:hover, :focus-visible) { text-decoration-color: currentColor; }
 
   .legal-body { min-width: 0; max-width: 66ch; }
-  .legal-draft { margin-bottom: 2.5rem; padding: 1rem 1.25rem; border: 1px solid var(--color-plum-900); font-size: 0.875rem; }
-  .legal-section { padding-block: 2.5rem; border-top: 1px solid var(--color-border-light); }
+  .legal-draft { margin-bottom: 2rem; padding: 0.875rem 1.25rem; border: 1px solid var(--surface-control-border, var(--color-border-control)); border-radius: var(--radius-tile); font-size: var(--type-body-sm); color: var(--surface-muted); }
+  .legal-section { padding-block: 2rem; border-top: 1px solid var(--surface-border); }
   .legal-section:first-of-type { padding-top: 0; border-top: 0; }
-  .legal-section h2 { display: flex; align-items: baseline; gap: 1rem; font-family: var(--font-barlow-condensed), "Arial Narrow", sans-serif; font-size: var(--type-heading-md); font-weight: 600; line-height: var(--leading-heading-md); }
-  .legal-section__number { flex-shrink: 0; width: 1.5rem; font-family: var(--font-inter), Arial, sans-serif; font-size: 0.75rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .legal-section h2 { display: flex; align-items: baseline; gap: 1rem; font-size: var(--type-heading-md); }
+  .legal-section__number { flex-shrink: 0; width: 1.5rem; font-size: var(--type-label); font-weight: 600; font-variant-numeric: tabular-nums; color: var(--surface-muted); }
   .legal-section p { margin-top: 1rem; padding-left: 2.5rem; font-size: var(--type-body-md); line-height: var(--leading-body-md); }
-  .legal-section p.legal-missing { padding: 0.75rem 1rem; margin-left: 2.5rem; border: 1px dashed var(--color-error-strong); color: var(--color-error-strong); font-size: 0.875rem; }
+  .legal-section p.legal-missing { padding: 0.75rem 1rem; margin-left: 2.5rem; border: 1px dashed var(--color-error-strong); border-radius: var(--radius-field); color: var(--color-error-strong); font-size: var(--type-body-sm); }
 
   /* Inside the layer: an unlayered rule would override the marker's padding regardless of specificity. */
   @media (max-width: 639px) {
     .legal-section p:not(.legal-missing) { padding-left: 0; }
     .legal-section p.legal-missing { margin-left: 0; }
   }
-}
 
-@media (min-width: 1024px) {
-  .legal-layout { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--layout-gutter); }
-  .legal-contents { grid-column: 1 / 4; align-self: start; position: sticky; top: calc(var(--layout-header-height) + 2rem); }
-  .legal-body { grid-column: 5 / 12; }
+  @media (min-width: 1024px) {
+    .legal-panel { grid-template-columns: minmax(14rem, 0.32fr) minmax(0, 1fr); gap: var(--space-10); }
+    .legal-contents-card { position: sticky; top: calc(var(--layout-header-height) + 1.5rem); }
+  }
 }

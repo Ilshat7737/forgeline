@@ -2,9 +2,6 @@
   .services-bento { display: grid; gap: var(--layout-gutter); padding-top: 1rem; padding-bottom: 2rem; }
   .services-bento > *, .services-bento section > *, .service-group__grid > li { min-width: 0; }
   .services-bento h1, .services-bento h2, .services-bento h3 { font-weight: 700; letter-spacing: var(--type-heading-tracking); line-height: 1.2; }
-  /* Match Home's sentence-case treatment without changing the source copy. */
-  .services-hero h1, .service-selector .section-heading__title, .technology-strip .section-heading__title, .services-cta h2 { text-transform: lowercase; }
-  .services-hero h1::first-letter, .service-selector .section-heading__title::first-letter, .technology-strip .section-heading__title::first-letter, .services-cta h2::first-letter { text-transform: uppercase; }
   .services-hero { display: grid; gap: var(--layout-gutter); }
   .services-hero__copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-block: clamp(2rem, 4vw, 3.5rem); }
   .services-hero h1 { max-width: 19ch; margin-block: 1.5rem 1rem; font-size: clamp(2rem, 3.7vw, 3.5rem); line-height: 1.1; letter-spacing: -0.045em; }

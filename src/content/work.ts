@@ -114,7 +114,7 @@ type WorkPageContent = {
 
 export const workPage = {
   hero: {
-    eyebrow: "WORK", heading: pages.work.heading, emphasis: "CLEAR DIRECTIONS.",
+    eyebrow: "WORK", heading: pages.work.heading, emphasis: "Clear directions.",
     introduction: "Explore illustrative product scenarios across web, mobile, desktop and operational software. Each concept shows how we turn a workflow problem into a product direction.",
     note: "These are illustrative concepts, not completed client engagements or measured client results.",
   },
@@ -125,5 +125,5 @@ export const workPage = {
   view: "View concept", scenario: "The scenario", direction: "Proposed direction",
   questions: "Questions to validate", services: "Relevant services", discuss: "Discuss a similar challenge",
   disclaimer: "No delivery metrics or client outcomes are asserted for this concept.",
-  cta: { heading: "HAVE A SIMILAR CHALLENGE?", body: "Bring us the workflow, product idea or system you want to improve.", label: "Discuss your project", href: "/contact" },
+  cta: { heading: "Have a similar challenge?", body: "Bring us the workflow, product idea or system you want to improve.", label: "Discuss your project", href: "/contact" },
 } as const satisfies WorkPageContent;

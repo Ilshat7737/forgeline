@@ -64,7 +64,7 @@ export const contactErrors = {
 
 export const contactPage = {
   hero: {
-    eyebrow: "CONTACT", heading: pages.contact.heading, emphasis: "CREATE OR IMPROVE?",
+    eyebrow: "CONTACT", heading: pages.contact.heading, emphasis: "create or improve?",
     introduction: "Share a little context about the product, your goals and the constraints you are working with. You do not need a finished specification to start the conversation.",
   },
   supportingPoints: [
@@ -84,7 +84,7 @@ export const contactPage = {
   submit: "Send project brief", pending: "Sending…",
   honeypot: "Website",
   success: {
-    heading: "THANKS. YOUR PROJECT BRIEF HAS BEEN RECEIVED.",
+    heading: "Thanks. Your project brief has been received.",
     body: "We will review the context you shared and contact you about the next step.",
     primary: { label: "Explore our work", href: "/work" },
     secondary: { label: "Back to home", href: "/" },

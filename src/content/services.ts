@@ -76,14 +76,14 @@ export const servicesPage = {
   hero: {
     eyebrow: "SERVICES",
     heading: pages.services.heading,
-    emphasis: "PRODUCT NEEDS.",
+    emphasis: "product needs.",
     introduction: "Bring us a new idea, a delivery challenge or a system that needs to change. Start with the problem; we will help define the right combination of skills.",
     cta: navigation.contact,
   },
-  selector: { heading: "WHERE ARE YOU NOW?", relevant: "Relevant to your situation" },
+  selector: { heading: "Where are you now?", relevant: "Relevant to your situation" },
   discuss: "Discuss this service",
   technology: {
-    heading: "TOOLS FOLLOW THE PRODUCT.",
+    heading: "Tools follow the product.",
     body: "We choose technologies around the product, the system you already operate and the skills your team needs to retain.",
     names: ["React", "React Native", "Node.js", ".NET", "Python", "Go", "MongoDB", "AWS"],
   },
@@ -93,7 +93,7 @@ export const servicesPage = {
     { title: "Ownership after release", body: "Include testing, deployment, diagnosis and knowledge transfer in delivery." },
   ],
   cta: {
-    heading: "NOT SURE WHERE TO START?",
+    heading: "Not sure where to start?",
     body: "Describe the outcome you need and the constraints you already know. We can begin with a focused assessment.",
     link: { label: "Tell us about the challenge", href: "/contact" },
   },

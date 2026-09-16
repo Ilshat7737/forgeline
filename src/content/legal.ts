@@ -96,7 +96,7 @@ export const legalUi = {
 const privacyPolicy: LegalDocument = {
   path: "/privacy-policy",
   linkLabel: "Privacy Policy",
-  heading: "PRIVACY POLICY",
+  heading: "Privacy Policy",
   title: `Privacy Policy | ${site.name}`,
   introduction: {
     kind: "template",
@@ -156,7 +156,7 @@ const privacyPolicy: LegalDocument = {
 const websiteTerms: LegalDocument = {
   path: "/terms-of-service",
   linkLabel: "Website Terms",
-  heading: "WEBSITE TERMS",
+  heading: "Website Terms",
   title: `Website Terms | ${site.name}`,
   introduction: {
     kind: "template",

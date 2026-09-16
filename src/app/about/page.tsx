@@ -16,7 +16,7 @@ const icons: readonly IconName[] = ["scan", "layers", "users"];
 
 export default function AboutPage() {
   return (
-    <div className="site-container studio-page" data-surface="canvas">
+    <div className="site-container studio-page" data-surface="canvas" data-reveal-group>
       <section className="studio-page__hero" aria-labelledby="about-heading">
         <Card surface="dark" shadow="soft" className="studio-page__hero-copy">
           <PillLabel>{aboutPage.hero.eyebrow}</PillLabel>

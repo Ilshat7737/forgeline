@@ -17,7 +17,7 @@ const conceptSurfaces = ["white", "lavender", "dark", "coral", "lavender", "whit
 
 export default function WorkPage() {
   return (
-    <div className="site-container work-bento" data-surface="canvas">
+    <div className="site-container work-bento" data-surface="canvas" data-reveal-group>
       <WorkHero />
       <section className="work-collection" aria-labelledby="concepts-heading">
         <h2 className="sr-only" id="concepts-heading">{workPage.collectionHeading}</h2>

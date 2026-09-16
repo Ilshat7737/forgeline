@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="site-container not-found" data-surface="canvas">
+    <div className="site-container not-found" data-surface="canvas" data-reveal-group>
       <Card surface="white" padding="lg" shadow="soft" className="not-found__card">
         <PillLabel variant="tag">{notFound.code}</PillLabel>
         <h1>{notFound.heading}</h1>

@@ -3,10 +3,12 @@ import { Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { PageShell } from "@/components/layout/page-shell";
+import { RevealRoot } from "@/components/layout/reveal-root";
 import { pages } from "@/content/pages";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/site-url";
 import "@/styles/globals.css";
+import "@/styles/reveal.css";
 
 const font = Manrope({
   subsets: ["latin"],
@@ -31,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <PageShell>{children}</PageShell>
         <SiteFooter />
+        <RevealRoot />
       </body>
     </html>
   );

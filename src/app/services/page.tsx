@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata(pages.services, "/services");
 
 export default function ServicesPage() {
   return (
-    <div className="site-container services-bento" data-surface="canvas">
+    <div className="site-container services-bento" data-surface="canvas" data-reveal-group>
       <ServicesHero />
       <ServiceSelector groups={serviceGroups.map((group) => ({ id: group.id, content: <ServiceGroup group={group} /> }))} />
       <TechnologyStrip />

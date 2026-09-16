@@ -13,7 +13,9 @@ the next one. Codex writes the code, except where the owner asked for Claude (R5
 | R6 | Cleanup, OG image, Services grid rhythm, final sweep | `docs/codex/redesign-6.md` | done — `89e5dd6` |
 | R7 | Eight additional Work concepts behind the category filters | `docs/codex/redesign-7.md` | done — `2754daa` (counts: Web 4, Mobile 3, Desktop 3, Operations 4) |
 | R8 | Approach and About as standalone routes | `docs/codex/redesign-8.md` | done — Codex wrote the code, then hit its usage limit before reporting; Claude verified and committed |
-| R9 | Repeating scroll-reveal animation (Claude, not Codex) | `docs/tasks/r9-scroll-animation.md` | next — last task; R8 is committed, so this can start at any time |
+| R9 | Repeating scroll-reveal animation (Claude, not Codex) | `docs/tasks/r9-scroll-animation.md` | done — CSS + one shared IntersectionObserver, repeats on every entry, legal documents excluded |
+
+All queued tasks are complete. Remaining launch work lives in `docs/production-checklist.md`.
 
 Launch command used for every stage:
 

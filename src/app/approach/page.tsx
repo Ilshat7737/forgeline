@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata(approachPage, "/approach");
 
 export default function ApproachPage() {
   return (
-    <div className="site-container studio-page" data-surface="canvas">
+    <div className="site-container studio-page" data-surface="canvas" data-reveal-group>
       <section className="studio-page__hero" aria-labelledby="approach-heading">
         <Card surface="coral" shadow="soft" className="studio-page__hero-copy">
           <PillLabel>{approachPage.hero.eyebrow}</PillLabel>

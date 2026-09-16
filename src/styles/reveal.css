@@ -1,0 +1,33 @@
+@layer components {
+  /*
+   * Only applies once RevealRoot has marked the document, so the site renders fully visible
+   * without JavaScript, before hydration and under reduced motion.
+   */
+  html[data-reveal="on"] :is([data-reveal-group], [data-reveal="stagger"]) > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 420ms ease-out, transform 420ms ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  html[data-reveal="on"] :is([data-reveal-group], [data-reveal="stagger"]) > [data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Keyboard users never land on a block that is mid-animation or transparent: reveal it instantly. */
+  html[data-reveal="on"] :is([data-reveal-group], [data-reveal="stagger"]) > *:focus-within {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-reveal="on"] :is([data-reveal-group], [data-reveal="stagger"]) > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

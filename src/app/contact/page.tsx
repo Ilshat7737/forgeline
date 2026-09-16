@@ -16,7 +16,7 @@ export const metadata: Metadata = pageMetadata(pages.contact, "/contact");
 export default async function ContactPage({ searchParams }: { searchParams: Promise<ContactSearchParams> }) {
   const defaults = resolveContactQuery(await searchParams);
   return (
-    <div className="site-container contact-bento" data-surface="canvas">
+    <div className="site-container contact-bento" data-surface="canvas" data-reveal-group>
       <Card as="section" surface="dark" shadow="soft" className="contact-hero" aria-labelledby="contact-heading">
         <PillLabel>{contactPage.hero.eyebrow}</PillLabel>
         <h1 id="contact-heading">{contactPage.hero.heading}</h1>

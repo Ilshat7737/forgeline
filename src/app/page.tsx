@@ -16,7 +16,7 @@ export const metadata: Metadata = pageMetadata(pages.home, "/");
 
 export default function HomePage() {
   return (
-    <div className="site-container home-bento">
+    <div className="site-container home-bento" data-reveal-group>
       <Hero />
       <StudioStrip />
       <ValueStatement />

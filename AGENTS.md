@@ -1,10 +1,15 @@
-# AGENTS.md — Forgeline V1 website
+# AGENTS.md — Forgeline website
 
 ## Sources of truth (in priority order)
 
-1. `software-agency-v1-implementation-spec.md` — structure, routes, behavior, copy.
-2. `docs/v1-content-brief.md` — brand name, extra copy, slugs, resolved conflicts.
-3. `software-agency-v1-reference.png` — visual direction only (its text is Russian; site copy is English).
+1. `docs/redesign-brief.md` — the approved visual direction, **Concept 02 "Modular studio"**. It replaces the
+   visual sections of the V1 spec (§3, §5 and the visual parts of §6–§10).
+2. `redes-new.png` — the Concept 02 mockup (Home only; its text is Russian, the site stays English).
+3. `software-agency-v1-implementation-spec.md` — routes, page structure, copy, form behaviour, accessibility,
+   SEO and performance. Its visual rules are superseded by 1–2.
+4. `docs/v1-content-brief.md` — brand name, extra copy, service slugs, resolved content conflicts.
+
+`software-agency-v1-reference.png` is the **previous** direction (Concept 01) and must not be used any more.
 
 Do **not** read or implement `software-agency-page-map-and-copy-en.md`; everything V1 needs from it is already in
 the content brief. Never add pages, claims, numbers, testimonials, logos or links not defined in 1–2.
@@ -24,18 +29,19 @@ npm run test        # vitest run
 npm run build
 ```
 
-## Accessibility corrections to the spec palette
+## Accessibility rules for the Concept 02 surfaces
 
-Measured WCAG contrast shows some spec pairings fail on light (lavender-100 / ivory) sections. Apply these tokens:
+Concept 02 puts text on four card surfaces (white, lavender, dark plum, coral) over a light canvas. Every pairing
+must be measured, not assumed:
 
-| Need | Dark sections (plum) | Light sections (lavender/ivory) |
-| --- | --- | --- |
-| Accent text / emphasis | `--color-coral-500` (7.3:1) | `--color-plum-900` or add `--color-coral-700: #a8322a` (5.5:1) |
-| Error text & error border | `--color-error` `#ff5f5f` (6.3:1) | add `--color-error-strong: #b3261e` (5.4:1) |
-| Focus outline | `--color-focus` `#ff9b91` | `--color-plum-900` (14:1) |
-| Primary button | coral bg + plum text (6.8:1) | same — fill contrast is fine |
-
-Never set coral-500/600 text or 1px coral outlines on lavender-100/ivory.
+- Body and label text ≥ 4.5:1; large text (≥ 24px bold / 32px regular) and meaningful icons ≥ 3:1.
+- Coral surfaces carry **dark plum text**, never white or light lavender text.
+- On white and lavender cards, accents and error text use the dark tokens (`--color-coral-700` `#a8322a` ≥ 5.4:1,
+  `--color-error-strong` `#b3261e`), never coral-500/600.
+- The mockup's muted grey supporting sentences and section labels are too light: darken them until they pass 4.5:1
+  on the actual card or canvas colour behind them.
+- Focus rings must stay visible on all four surfaces: dark ring on light surfaces, light ring on dark ones.
+- Soft shadows and blurred glows are decorative only; never rely on them to separate interactive elements.
 
 ## Working rules
 

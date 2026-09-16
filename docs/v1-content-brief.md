@@ -35,8 +35,9 @@ Skip link: **Skip to main content**.
 **Footer** — as spec §6, plus a description under the brand line:
 > Product strategy, design and engineering for teams creating something new or improving what already works.
 
-Legal column: Privacy Policy and Website Terms have no real pages in V1 → **hide the Legal column** until real
-routes exist (spec §6: no dead links). Keep it as a commented-out/configurable entry in `navigation.ts`.
+Legal column: Privacy Policy and Website Terms are published, so the footer lists both. The column is rendered
+from `publishedLegalLinks()`, which returns nothing while a document still lacks a required fact — that is what
+keeps the footer free of dead links.
 Back to top label: **Back to top**.
 
 ## 3. Home `/`
@@ -257,8 +258,8 @@ Left column "process summary" (h2 **What happens next**):
 > should join the conversation and any materials that would help.
 
 Validation messages, success state and general error: **use spec wording** (spec §10.4, §10.6).
-Privacy helper: plain text "We will use these details to respond to your enquiry." — the "Read our Privacy Policy."
-sentence is omitted until a real policy route exists (spec §10.3).
+Privacy helper: "We will use these details to respond to your enquiry." followed by "Read our Privacy Policy."
+linking to `/privacy-policy`. The link appears only while that page is published, so it can never point at a draft.
 
 ### Form service option slugs and query mapping
 

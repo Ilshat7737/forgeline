@@ -14,8 +14,9 @@ the next one. Codex writes the code, except where the owner asked for Claude (R5
 | R7 | Eight additional Work concepts behind the category filters | `docs/codex/redesign-7.md` | done — `2754daa` (counts: Web 4, Mobile 3, Desktop 3, Operations 4) |
 | R8 | Approach and About as standalone routes | `docs/codex/redesign-8.md` | done — Codex wrote the code, then hit its usage limit before reporting; Claude verified and committed |
 | R9 | Repeating scroll-reveal animation (Claude, not Codex) | `docs/tasks/r9-scroll-animation.md` | done — CSS + one shared IntersectionObserver, repeats on every entry, legal documents excluded |
+| R10 | A distinct hero artwork for every page | `docs/codex/redesign-10.md` | done — Codex drew Services, Work, About and Contact; its sandbox blocked Chromium, so Claude ran the browser verification |
 
-| R10 | A distinct hero artwork for every page | `docs/codex/redesign-10.md` | queued — for Codex once its usage limit resets (~20:18 on 2026-09-16) |
+All ten stages are done.
 
 Remaining launch work lives in `docs/production-checklist.md`.
 

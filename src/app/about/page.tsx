@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CubeArtwork } from "@/components/home/studio-artwork";
+import { AboutArtwork } from "@/components/about/about-artwork";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card, type CardSurface } from "@/components/ui/card";
 import { Icon, type IconName } from "@/components/ui/icon";
@@ -23,8 +23,8 @@ export default function AboutPage() {
           <h1 id="about-heading">{aboutPage.hero.heading}</h1>
           <p>{aboutPage.hero.introduction}</p>
         </Card>
-        <Card surface="lavender" shadow="soft" padding="none" className="studio-page__art" aria-hidden="true">
-          <CubeArtwork />
+        <Card surface="lavender" shadow="soft" padding="none" className="studio-page__art">
+          <AboutArtwork />
         </Card>
       </section>
       <section className="studio-page__section" aria-labelledby="purpose-heading">

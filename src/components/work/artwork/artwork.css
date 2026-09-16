@@ -1,10 +1,11 @@
 @layer components {
   /* Shared native artwork: keep dimensions reserved while deferring offscreen paint. */
-  .cube-artwork, .slab-artwork { display: block; width: 100%; aspect-ratio: 6 / 5; }
+  .cube-artwork, .slab-artwork, .studio-artwork { display: block; width: 100%; aspect-ratio: 6 / 5; }
   .cube-artwork--scatter { aspect-ratio: 34 / 27; }
   .slab-artwork { aspect-ratio: 1; }
-  .cube-artwork > svg, .slab-artwork > svg { display: block; width: 100%; height: 100%; }
-  .cube-artwork--scatter, .slab-artwork, .product-artwork { content-visibility: auto; contain-intrinsic-size: none; }
+  .cube-artwork > svg, .slab-artwork > svg, .studio-artwork > svg { display: block; width: 100%; height: 100%; }
+  .cube-artwork--scatter, .slab-artwork, .studio-artwork, .product-artwork { content-visibility: auto; contain-intrinsic-size: none; }
+  .studio-artwork__object { filter: drop-shadow(0 10px 9px rgb(43 32 51 / 12%)); }
   .product-artwork { container-type: inline-size; position: relative; width: 100%; aspect-ratio: 2.15; overflow: hidden; background: var(--color-plum-950); color: var(--color-lavender-100); text-align: left; user-select: none; border-radius: var(--radius-tile); }
   .artwork-micro { font-size: 1.05cqw; font-weight: 500; letter-spacing: 0.1em; }
   .financial-artwork { background: var(--color-plum-800); }

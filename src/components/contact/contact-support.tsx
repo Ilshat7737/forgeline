@@ -1,4 +1,4 @@
-import { CubeArtwork } from "@/components/home/studio-artwork";
+import { ContactArtwork } from "@/components/contact/contact-artwork";
 import { contactPage } from "@/content/contact";
 
 export function ContactSupport() {
@@ -10,7 +10,7 @@ export function ContactSupport() {
         {contactPage.supportingPoints.map((point) => <li key={point}>{point}</li>)}
       </ul>
       <div className="contact-support__art">
-        <CubeArtwork variant="scatter" />
+        <ContactArtwork />
       </div>
     </section>
   );

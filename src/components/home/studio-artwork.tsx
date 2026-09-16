@@ -1,4 +1,27 @@
 import { homeLayout } from "@/content/home-layout";
+import type { ReactNode } from "react";
+
+/** Only this wrapper enters the accessibility tree; SVG internals are decorative. */
+export function StudioArtwork({ label, children, compact = false }: { label: string; children: ReactNode; compact?: boolean }) {
+  return <div className={`studio-artwork${compact ? " studio-artwork--compact" : ""}`} role="img" aria-label={label}>
+    <svg viewBox="0 0 480 400" aria-hidden="true" focusable="false">{children}</svg>
+  </div>;
+}
+
+/** A shared 2:1 isometric plane. Transforms stay inside the SVG, away from reveal cards. */
+export function IsometricTile({ x, y, width, depth, height = 16, tone = "lavender", children }: {
+  x: number; y: number; width: number; depth: number; height?: number;
+  tone?: "lavender" | "coral" | "white"; children?: ReactNode;
+}) {
+  return <g className="studio-artwork__object" transform={`translate(${x} ${y})`} stroke="var(--color-plum-900)" strokeWidth="1.5" strokeLinejoin="round">
+    <path d={`M${-depth} ${depth / 2} ${width - depth} ${(width + depth) / 2}v${height}L${-depth} ${depth / 2 + height}Z`} fill="var(--color-lavender-300)" />
+    <path d={`M${width - depth} ${(width + depth) / 2} ${width} ${width / 2}v${height}L${width - depth} ${(width + depth) / 2 + height}Z`} fill="var(--color-plum-800)" />
+    <g transform="matrix(1 .5 -1 .5 0 0)">
+      <rect width={width} height={depth} fill={`var(--color-surface-${tone})`} />
+      {children}
+    </g>
+  </g>;
+}
 
 type Cube = { x: number; y: number; size: number; coral?: boolean; dark?: boolean };
 function CubeShape({ x, y, size, coral, dark }: Cube) {

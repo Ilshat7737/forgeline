@@ -1,4 +1,4 @@
-import { CubeArtwork } from "@/components/home/studio-artwork";
+import { ServicesArtwork } from "@/components/services/services-artwork";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card } from "@/components/ui/card";
 import { PillLabel } from "@/components/ui/pill-label";
@@ -15,7 +15,7 @@ export function ServicesHero() {
         <ButtonLink href={content.cta.href} variant="primary-dark">{content.cta.label}</ButtonLink>
       </Card>
       <Card surface="lavender" padding="none" shadow="soft" className="services-hero__art">
-        <CubeArtwork />
+        <ServicesArtwork />
       </Card>
     </section>
   );

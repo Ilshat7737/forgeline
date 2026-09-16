@@ -8,7 +8,7 @@
   .services-hero__copy > p { max-width: 49ch; font-size: var(--type-body-lg); color: var(--surface-muted); }
   .services-hero__copy .button-link { margin-top: 2rem; }
   .services-hero__art { display: grid; place-items: center; overflow: hidden; min-height: 18rem; background: radial-gradient(ellipse at 25% 20%, #d4b5f5, transparent 70%), var(--color-surface-lavender); }
-  .services-hero__art .cube-artwork { display: block; width: 100%; height: 100%; max-height: 34rem; }
+  .services-hero__art .studio-artwork { display: block; width: 100%; max-width: 40.8rem; }
 
   .service-selector { padding-block: clamp(2rem, 4vw, 3rem); }
   .service-selector__tabs { display: grid; gap: 0.75rem; margin-block: 1.5rem; }

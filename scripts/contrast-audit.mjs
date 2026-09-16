@@ -60,3 +60,12 @@ const extra = [
 ];
 console.log('\n| Additional pairing | Minimum contrast |\n| --- | ---: |');
 for (const [name, foreground, backgrounds] of extra) console.log(`| ${name} | ${measure(foreground, backgrounds)} |`);
+
+// Stage 10: opaque meaningful contours, connectors and marks; shadows / depth shading are decorative.
+const heroGraphics = [
+  ['Module symbols / screen details / message outlines', 'plum-900', ['surface-white', 'surface-lavender', 'lavender-300', 'surface-coral']],
+  ['Team connectors on the lavender card', 'plum-900', ['surface-lavender']],
+  ['Node centres / message dots on white', 'plum-800', ['surface-white']],
+];
+console.log('\n| Hero artwork graphics (minimum 3:1) | Minimum contrast |\n| --- | ---: |');
+for (const [name, foreground, backgrounds] of heroGraphics) console.log(`| ${name} | ${measure(foreground, backgrounds, 3)} |`);

@@ -1,4 +1,4 @@
-import { CubeArtwork } from "@/components/home/studio-artwork";
+import { WorkHeroArtwork } from "@/components/work/work-hero-artwork";
 import { Card } from "@/components/ui/card";
 import { PillLabel } from "@/components/ui/pill-label";
 import { workPage } from "@/content/work";
@@ -14,7 +14,7 @@ export function WorkHero() {
         <p className="work-hero__note">{content.note}</p>
       </Card>
       <Card surface="lavender" padding="none" shadow="soft" className="work-hero__art">
-        <CubeArtwork />
+        <WorkHeroArtwork />
       </Card>
     </section>
   );

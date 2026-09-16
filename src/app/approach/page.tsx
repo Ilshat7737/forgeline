@@ -21,7 +21,7 @@ export default function ApproachPage() {
           <h1 id="approach-heading">{approachPage.hero.heading}</h1>
           <p>{approachPage.hero.introduction}</p>
         </Card>
-        <Card surface="dark" shadow="soft" padding="none" className="studio-page__art" aria-hidden="true">
+        <Card surface="dark" shadow="soft" padding="none" className="studio-page__art">
           <SlabArtwork />
         </Card>
       </section>

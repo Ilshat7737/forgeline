@@ -6,6 +6,7 @@ import { workConcepts, workPage } from "@/content/work";
 import { WorkFilter, WorkFilterBoundary } from "./work-filter";
 import { ConceptSection } from "./concept-section";
 import { ConceptCard } from "./concept-card";
+import WorkPage from "@/app/work/page";
 
 const entries = workConcepts.map((concept) => ({ id: concept.id, category: concept.category, content: <ConceptCard concept={concept} artwork={null} /> }));
 
@@ -40,9 +41,10 @@ describe("Work filter", () => {
     expect(screen.getAllByRole("article")).toHaveLength(1);
     expect(screen.getByText("Showing 1 concept").getAttribute("aria-live")).toBe("polite");
     for (const concept of workConcepts) {
-      expect(screen.getByRole("region", { name: concept.heading }).id).toBe(concept.id);
+      const section = screen.getByRole("region", { name: concept.heading });
+      expect(section.id).toBe(concept.id);
+      expect(within(section).getByText(workPage.disclaimer)).toBeTruthy();
     }
-    expect(screen.getAllByText(workPage.disclaimer)).toHaveLength(6);
     fireEvent.click(screen.getByRole("button", { name: "All" }));
     expect(window.location.search).toBe("?source=example");
     expect(screen.getAllByRole("article")).toHaveLength(6);
@@ -96,5 +98,27 @@ describe("Work filter", () => {
     fail = false;
     fireEvent.click(screen.getByRole("button", { name: workPage.retry }));
     expect(screen.getAllByRole("article")).toHaveLength(6);
+  });
+});
+
+describe("Work composition", () => {
+  it("keeps concept disclosure, labelled artwork and contact links in every card and detail", () => {
+    render(<WorkPage />);
+    expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    for (const concept of workConcepts) {
+      const card = screen.getByRole("article", { name: concept.title });
+      const detail = screen.getByRole("region", { name: concept.heading });
+      for (const container of [card, detail]) {
+        expect(within(container).getByText("CONCEPT")).toBeTruthy();
+        expect(within(container).getByText(workPage.disclaimer)).toBeTruthy();
+        expect(within(container).getAllByRole("img")).toHaveLength(1);
+        expect(within(container).getByRole("img").getAttribute("aria-label")).toBe(concept.image.alt);
+        expect(container.querySelector('[role="img"] > [aria-hidden="true"]')).toBeTruthy();
+      }
+      expect(within(card).getByRole("link").getAttribute("href")).toBe(`#${concept.id}`);
+      expect(within(detail).getByRole("link", { name: workPage.discuss }).getAttribute("href")).toBe(`/contact?project=${concept.id}`);
+      expect(Array.from(detail.querySelectorAll('.concept-section__services a'), (link) => link.getAttribute("href")))
+        .toEqual(concept.relatedServices.map((slug) => `/contact?service=${slug}`));
+    }
   });
 });

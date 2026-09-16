@@ -1,13 +1,15 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Card, type CardSurface } from "@/components/ui/card";
 import { services } from "@/content/services";
 import { workPage, type WorkConcept } from "@/content/work";
 import { ConceptLabel } from "./concept-label";
 
-export function ConceptSection({ concept }: { concept: WorkConcept }) {
+export function ConceptSection({ concept, artwork, surface = "white" }: { concept: WorkConcept; artwork?: ReactNode; surface?: CardSurface }) {
   return (
-    <section id={concept.id} className="concept-section" data-surface="light" aria-labelledby={`detail-${concept.id}`}>
-      <div className="site-container concept-section__layout">
+    <Card as="section" id={concept.id} surface={surface} shadow="soft" className="concept-section" aria-labelledby={`detail-${concept.id}`}>
+      <div className="concept-section__copy">
         <header>
           <ConceptLabel />
           <h2 id={`detail-${concept.id}`}>{concept.heading}</h2>
@@ -22,10 +24,11 @@ export function ConceptSection({ concept }: { concept: WorkConcept }) {
               <li key={slug}><Link href={`/contact?service=${slug}`}>{services.find((service) => service.slug === slug)?.title}</Link></li>
             ))}</ul>
           </div>
-          <ButtonLink href={`/contact?project=${concept.id}`} surface="light">{workPage.discuss}</ButtonLink>
+          <ButtonLink href={`/contact?project=${concept.id}`} variant={surface === "coral" ? "primary-dark" : "primary-coral"}>{workPage.discuss}</ButtonLink>
           <p className="concept-section__disclaimer">{workPage.disclaimer}</p>
         </div>
       </div>
-    </section>
+      <div className="concept-section__artwork" style={{ aspectRatio: concept.image.aspectRatio }}>{artwork}</div>
+    </Card>
   );
 }

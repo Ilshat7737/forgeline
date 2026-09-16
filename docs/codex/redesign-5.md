@@ -3,6 +3,26 @@
 Read `AGENTS.md`, `docs/redesign-brief.md`, spec §10 for the copy, and reuse the design system and patterns from
 redesign stages 1–4. This is the last page-level stage.
 
+## Stage 4 review fix (do this first, across all pages)
+
+Sentence case is currently faked in CSS: content strings are still uppercase and `home.css`, `services.css` and
+`work.css` apply `text-transform: lowercase` with an `::first-letter { text-transform: uppercase }` override. A
+heading that contains two sentences therefore renders wrong — `/work` shows **"Product problems. clear
+directions."** — and screen readers still receive the uppercase source string, which some spell out letter by letter.
+
+Fix it at the content level:
+
+1. Rewrite the affected strings in `src/content/*.ts` in real sentence case (for example `"Product problems. Clear
+   directions."`, `"We build software. You move your business forward."`, `"Your challenge. Our team."`,
+   `"Choose the support your product needs."`, `"Where are you now?"`, `"Tools follow the product."`,
+   `"Not sure where to start?"`, `"How we begin."`, the Home hero lines and the Services hero emphasis).
+   Keep the wording identical — change only letter case. Page titles and meta descriptions already use normal case
+   and must not change.
+2. Delete the `text-transform` / `::first-letter` pairs from all three stylesheets. Small uppercase pill labels and
+   section labels keep their own uppercase styling.
+3. Check every page afterwards for headings that still read wrong, including the Services hero emphasis fragment
+   (the coral highlight must still cover exactly the same words).
+
 ## `/contact` — approved layout (owner-reviewed)
 
 ```

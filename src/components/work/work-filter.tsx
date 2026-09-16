@@ -53,16 +53,18 @@ export function WorkFilter({ entries, status = "ready", onRetry = () => window.l
   const visible = filterConcepts(entries, selected);
   return (
     <>
-      <div className="work-filter__fade">
-      <div ref={rowRef} className="work-filter" role="group" aria-label={workPage.filterLabel}>
-        {workCategories.map((category) => (
-          <button key={category.id} type="button" aria-pressed={selected === category.id} aria-controls="concept-grid" onClick={() => selectCategory(category.id)}>{category.label}</button>
-        ))}
+      <div className="work-filter__toolbar">
+        <div className="work-filter__fade">
+          <div ref={rowRef} className="work-filter" role="group" aria-label={workPage.filterLabel}>
+            {workCategories.map((category) => (
+              <button key={category.id} type="button" aria-pressed={selected === category.id} aria-controls="concept-grid" onClick={() => selectCategory(category.id)}>{category.label}</button>
+            ))}
+          </div>
+        </div>
+        <p className="work-filter__count" aria-live="polite" aria-atomic="true">
+          {status === "ready" && `${workPage.showing} ${visible.length} ${visible.length === 1 ? workPage.singular : workPage.plural}`}
+        </p>
       </div>
-      </div>
-      <p className="work-filter__count" aria-live="polite" aria-atomic="true">
-        {status === "ready" && `${workPage.showing} ${visible.length} ${visible.length === 1 ? workPage.singular : workPage.plural}`}
-      </p>
       <WorkStatusMessage status={status} onRetry={onRetry} />
       {status === "ready" && visible.length === 0 && (
         <div className="work-status"><p>{workPage.empty}</p><button type="button" className="work-reset" onClick={() => selectCategory("all")}>{workPage.reset}</button></div>

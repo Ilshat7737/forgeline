@@ -1,4 +1,6 @@
+import { PillLabel } from "@/components/ui/pill-label";
+
 // Credibility is fixed here: concept records cannot supply arbitrary labels.
 export function ConceptLabel() {
-  return <span className="concept-label">CONCEPT</span>;
+  return <PillLabel variant="tag" className="concept-label">CONCEPT</PillLabel>;
 }

@@ -110,7 +110,7 @@ export function MobileMenu() {
           <span />
         </span>
       </button>
-      <div ref={panelRef} id={panelId} className="mobile-menu__panel" hidden={!isOpen}>
+      <div ref={panelRef} id={panelId} className="mobile-menu__panel" data-surface="white" hidden={!isOpen}>
         <nav aria-label={navigation.label} className="site-container">
           {navigation.links.map((link) => (
             <Link
@@ -125,6 +125,8 @@ export function MobileMenu() {
           ))}
           <ButtonLink
             href={navigation.contact.href}
+            variant="primary-coral"
+            surface="white"
             aria-current={pathname === navigation.contact.href ? "page" : undefined}
             className="mt-4 w-full"
             onClick={closeMenu}

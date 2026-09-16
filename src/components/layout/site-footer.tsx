@@ -10,20 +10,20 @@ export function SiteFooter() {
   // Legal pages appear only once published, so the footer never links to a draft or a 404.
   const legalNavigation = publishedLegalLinks();
   return (
-    <footer className="border-t border-border-dark bg-plum-950" data-surface="dark">
+    <footer className="site-footer" data-surface="canvas">
       <div className="site-container py-6 lg:py-8">
-        <div className="grid gap-5 lg:grid-cols-12 lg:gap-grid">
-          <div className="lg:col-span-6">
+        <div className="site-footer__grid">
+          <div className="site-footer__brand">
             <Wordmark />
             <p className="mt-2 text-body-md font-medium">{site.footer.tagline}</p>
-            <p className="mt-2 max-w-measure text-body-md text-lavender-100">{site.footer.description}</p>
+            <p className="mt-2 max-w-measure text-body-sm text-text-muted">{site.footer.description}</p>
           </div>
-          <nav aria-label={navigation.footerLabel} className="flex flex-col items-start lg:col-span-3">
+          <nav aria-label={navigation.footerLabel} className="site-footer__nav">
             {navigation.links.map((link) => (
               <Link key={link.href} href={link.href} className="nav-link">{link.label}</Link>
             ))}
           </nav>
-          <div className="lg:col-span-3">
+          <div className="site-footer__contact">
             <Link href={navigation.contact.href} className="editorial-link">
               {navigation.contact.label}<ArrowIcon direction="east" className="shrink-0" />
             </Link>
@@ -36,7 +36,7 @@ export function SiteFooter() {
             )}
           </div>
         </div>
-        <div className="mt-6 flex flex-col gap-2 border-t border-border-dark pt-3 text-label sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2 border-t border-border-light pt-3 text-label sm:flex-row sm:items-center sm:justify-between">
           <p>{getCopyright()}</p>
           <a href="#top" className="editorial-link">
             {site.footer.backToTop}<ArrowIcon />

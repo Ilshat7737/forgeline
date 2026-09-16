@@ -7,10 +7,10 @@ import { MobileMenu } from "./mobile-menu";
 export function SiteHeader() {
   return (
     <div className="site-header-slot">
-      <header className="site-header" data-sticky="false" data-surface="dark">
-        <div className="site-container flex h-full items-center justify-between gap-3">
+      <header className="site-header" data-sticky="false" data-surface="canvas">
+        <div className="site-header__inner site-container flex h-full items-center justify-between gap-3">
           <Wordmark />
-          <nav aria-label={navigation.label} className="desktop-navigation hidden items-center gap-4 lg:flex">
+          <nav aria-label={navigation.label} className="desktop-navigation hidden items-center gap-1 lg:flex">
             {navigation.links.map((link) => (
               <Link
                 key={link.href}
@@ -24,6 +24,8 @@ export function SiteHeader() {
           </nav>
           <ButtonLink
             href={navigation.contact.href}
+            variant="primary-coral"
+            surface="canvas"
             className="hidden lg:inline-flex"
             data-header-link
           >

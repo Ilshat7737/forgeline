@@ -2,15 +2,14 @@ import Link from "next/link";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/cn";
 import { ArrowIcon } from "./arrow-icon";
+import type { ButtonAppearance } from "./button";
 
-type ButtonLinkProps = ComponentProps<typeof Link> & {
-  variant?: "primary" | "secondary";
-  surface?: "dark" | "light";
-};
+type ButtonLinkProps = ComponentProps<typeof Link> & ButtonAppearance;
 
 export function ButtonLink({
   variant = "primary",
-  surface = "dark",
+  surface,
+  arrow = "east",
   className,
   children,
   ...props
@@ -22,7 +21,7 @@ export function ButtonLink({
       data-surface={surface}
     >
       <span>{children}</span>
-      <ArrowIcon className="button-link__arrow shrink-0" />
+      {arrow && <ArrowIcon direction={arrow} className="button-link__arrow shrink-0" />}
     </Link>
   );
 }

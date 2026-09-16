@@ -1,75 +1,101 @@
 @theme static {
   --color-*: initial;
-  --color-plum-950: #160f1b;
-  --color-plum-900: #231525;
-  --color-plum-800: #332035;
-  --color-coral-500: #ff786a;
-  --color-coral-600: #ec675b;
+  --color-plum-950: #201727;
+  --color-plum-900: #2b2033;
+  --color-plum-800: #3b2d46;
+  --color-coral-500: #ff8977;
+  --color-coral-600: #f47865;
   --color-coral-700: #a8322a;
-  --color-lavender-300: #e0b7ff;
+  --color-lavender-300: #d4b5f5;
   --color-lavender-100: #f0e5f6;
   --color-ivory: #fff9f5;
-  --color-ink: #1d1220;
+  --color-ink: #261d2e;
   --color-white: #ffffff;
-  --color-border-dark: rgb(240 229 246 / 26%);
-  --color-border-light: rgb(35 21 37 / 22%);
-  --color-focus: #ff9b91;
-  --color-error: #ff5f5f;
+  --color-canvas: #f5f0f7;
+  --color-surface-white: #fffaff;
+  --color-surface-lavender: #ece4fc;
+  --color-surface-dark: var(--color-plum-900);
+  --color-surface-coral: var(--color-coral-500);
+  --color-text-muted: #61536c;
+  --color-text-on-dark: #fcf7ff;
+  --color-text-muted-on-dark: #d7c9e2;
+  --color-text-on-coral: var(--color-plum-900);
+  --color-text-muted-on-coral: #493047;
+  --color-border-dark: #786980;
+  --color-border-light: #c6b8d0;
+  --color-border-control: #796782;
+  --color-focus: #f2dfff;
+  --color-error: #ffaaa2;
   --color-error-strong: #b3261e;
   --color-success: #d8ffcf;
 }
 
 :root {
-  --type-display-xl: clamp(3.5rem, 17vw, 5.5rem);
-  --leading-display-xl: 0.86;
-  --type-display-lg: clamp(3.5rem, 17vw, 5.5rem);
-  --leading-display-lg: 0.88;
-  --type-display-md: clamp(3rem, 5vw, 5.5rem);
-  --leading-display-md: 0.92;
-  --type-heading-lg: clamp(2.25rem, 3.5vw, 4rem);
-  --leading-heading-lg: 1;
-  --type-heading-md: 1.75rem;
-  --leading-heading-md: 1.1;
-  --type-body-lg: 1.25rem;
+  /* Temporary font aliases keep existing page sections on the single new family. */
+  --font-barlow-condensed: var(--font-manrope);
+  --font-inter: var(--font-manrope);
+  --type-display-xl: clamp(2.5rem, 5.4vw, 4.75rem);
+  --leading-display-xl: 1.06;
+  --type-display-lg: clamp(2.25rem, 4.5vw, 4rem);
+  --leading-display-lg: 1.08;
+  --type-display-md: clamp(2rem, 3.6vw, 3.25rem);
+  --leading-display-md: 1.1;
+  --type-heading-lg: clamp(1.75rem, 3vw, 2.75rem);
+  --leading-heading-lg: 1.15;
+  --type-heading-md: clamp(1.25rem, 2vw, 1.5rem);
+  --leading-heading-md: 1.25;
+  --type-body-lg: clamp(1.125rem, 1.5vw, 1.25rem);
   --leading-body-lg: 1.55;
   --type-body-md: 1rem;
   --leading-body-md: 1.6;
+  --type-body-sm: 0.875rem;
   --type-label: 0.75rem;
-  --leading-label: 1.2;
-  --type-label-tracking: 0.14em;
+  --leading-label: 1.4;
+  --type-label-tracking: 0.12em;
+  --type-heading-tracking: -0.035em;
 
+  /* Keep the existing Tailwind unit; add a 4px-based scale for the bento grid. */
   --space-unit: 0.5rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
   --layout-content: 90rem;
-  --layout-gutter: 1.5rem;
-  --layout-page-padding: 1.25rem;
-  --layout-section-padding: clamp(4.5rem, 10vw, 5.5rem);
+  --layout-gutter: clamp(0.75rem, 1.5vw, 1.5rem);
+  --layout-page-padding: 1rem;
+  --layout-card-padding: clamp(1.25rem, 2.8vw, 2.5rem);
+  --layout-section-padding: clamp(3rem, 6vw, 5rem);
   --layout-columns: 12;
   --layout-measure: 66ch;
-  --layout-header-height: 4rem;
-  --radius-panel: 0;
-  --radius-control: 0.25rem;
+  --layout-header-height: 4.5rem;
+  --radius-card: 1.5rem;
+  --radius-tile: 1rem;
+  --radius-field: 0.875rem;
+  --radius-pill: 9999px;
+  --radius-panel: var(--radius-card);
+  --radius-control: var(--radius-field);
+  --shadow-soft: 0 4px 16px rgb(43 32 51 / 5%);
+  --shadow-card: 0 12px 32px rgb(43 32 51 / 8%);
+  --shadow-raised: 0 18px 48px rgb(43 32 51 / 12%);
+  --canvas-glow: radial-gradient(ellipse at 8% 12%, rgb(255 137 119 / 12%), transparent 42%),
+    radial-gradient(ellipse at 92% 34%, rgb(190 145 238 / 16%), transparent 48%),
+    radial-gradient(ellipse at 15% 95%, rgb(212 181 245 / 12%), transparent 42%);
   --motion-control: 180ms;
 }
 
 @media (min-width: 640px) {
-  :root {
-    --layout-page-padding: 2rem;
-  }
+  :root { --layout-page-padding: 1.5rem; }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --type-display-xl: clamp(5.5rem, 9.2vw, 10rem);
-    --leading-display-xl: 0.84;
-    --type-display-lg: clamp(4rem, 7vw, 7.5rem);
-    --layout-page-padding: 3rem;
-    --layout-section-padding: clamp(7rem, 10vw, 10rem);
-    --layout-header-height: 5.25rem;
-  }
-}
-
-@media (min-width: 1440px) {
-  :root {
-    --layout-page-padding: 4rem;
+    --layout-page-padding: 2rem;
+    --layout-header-height: 6rem;
   }
 }

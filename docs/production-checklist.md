@@ -7,7 +7,8 @@ V1 is feature-complete and verified locally (lint, typecheck, 82 tests, producti
 
 | Item | Why | Where |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, Open Graph URLs, `robots.txt` and `sitemap.xml` fall back to `http://localhost:3000` without it. Set it at **build** time. | `.env` / hosting env |
+| ~~`NEXT_PUBLIC_SITE_URL`~~ — done | Set to `https://forgeline.tech` in the committed `.env.production`, so a plain `npm run build` produces the right canonical URLs, Open Graph URLs, `robots.txt` and `sitemap.xml`. Override only for a staging host. | `.env.production` |
+| DNS and TLS for `forgeline.tech` | `A`/`AAAA` for the apex and `www`, then certbot. `www` redirects to the apex in nginx. | `deploy/nginx.conf`, `docs/deployment.md` |
 | **Enquiry delivery provider — submissions are currently simulated** | At the owner's request the form always confirms: the server returns success after a short delay and the visitor is told we will reply within 7 business days. **Nothing is delivered, stored or forwarded**, so no enquiry reaches anyone until a real provider is connected here. | `src/lib/enquiry/acknowledge-adapter.ts`, `get-enquiry-adapter.ts` |
 | Server-side rate limiting | Required by spec §10.5 once a real provider is connected. | Before the adapter call in `src/app/contact/actions.ts` |
 | Response-time promise | The success screen commits to a reply "within 7 business days". Keep it only while the business can honour it. | `src/content/contact.ts` (`success.body`) |

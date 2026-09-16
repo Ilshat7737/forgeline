@@ -1,0 +1,30 @@
+# Forgeline — systemd unit for the standalone Next.js server
+# Install: /etc/systemd/system/forgeline.service, then
+#   systemctl daemon-reload && systemctl enable --now forgeline
+
+[Unit]
+Description=Forgeline website (Next.js standalone)
+After=network.target
+
+[Service]
+Type=simple
+User=forgeline
+WorkingDirectory=/srv/forgeline/current
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+Environment=NEXT_PUBLIC_SITE_URL=https://forgeline.tech
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=3
+
+# The app writes nothing and needs no privileges.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/srv/forgeline
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { OrganizationSchema } from "@/components/layout/organization-schema";
 import { PageShell } from "@/components/layout/page-shell";
 import { RevealRoot } from "@/components/layout/reveal-root";
 import { pages } from "@/content/pages";
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <PageShell>{children}</PageShell>
         <SiteFooter />
         <RevealRoot />
+        <OrganizationSchema />
       </body>
     </html>
   );

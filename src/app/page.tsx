@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { StudioStrip } from "@/components/home/studio-strip";
+import "@/styles/contact.css";
 import { Hero } from "@/components/home/hero";
 import { ValueStatement } from "@/components/home/value-statement";
-import { ServicesAccordion } from "@/components/home/services-accordion";
+import { ServicesGrid } from "@/components/home/services-grid";
 import { ProcessSection } from "@/components/home/process-section";
 import { InsightLinks } from "@/components/home/insight-links";
 import { FeaturedWork } from "@/components/home/featured-work";
@@ -14,14 +16,15 @@ export const metadata: Metadata = pageMetadata(pages.home, "/");
 
 export default function HomePage() {
   return (
-    <>
+    <div className="site-container home-bento">
       <Hero />
+      <StudioStrip />
       <ValueStatement />
-      <ServicesAccordion />
+      <ServicesGrid />
       <ProcessSection />
       <InsightLinks />
       <FeaturedWork />
       <ContactBand />
-    </>
+    </div>
   );
 }

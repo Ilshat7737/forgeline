@@ -1,9 +1,9 @@
 import { artwork } from "@/content/artwork";
 
-export function EverydayMobileArtwork() {
+export function EverydayMobileArtwork({ label }: { label?: string } = {}) {
   const content = artwork.mobile;
   return (
-    <div className="product-artwork mobile-artwork" role="img" aria-label={content.alt}>
+    <div className="product-artwork mobile-artwork" role="img" aria-label={label ?? content.alt}>
       <div className="mobile-artwork__composition" aria-hidden="true">
         <div className="task-screen task-screen--list">
           <div className="task-screen__top"><span className="artwork-micro">{content.sample}</span><span>✳</span></div>

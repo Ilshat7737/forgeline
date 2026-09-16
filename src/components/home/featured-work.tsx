@@ -1,36 +1,21 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/ui/arrow-icon";
-import { SectionLabel } from "@/components/ui/section-label";
+import { Card } from "@/components/ui/card";
+import { PillLabel } from "@/components/ui/pill-label";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { FinancialWorkspaceArtwork } from "@/components/work/artwork/financial-workspace-artwork";
 import { EverydayMobileArtwork } from "@/components/work/artwork/everyday-mobile-artwork";
 import { home } from "@/content/home";
-
+import { homeLayout } from "@/content/home-layout";
 export function FeaturedWork() {
-  return (
-    <section className="home-section home-section--light" data-surface="light" aria-labelledby="work-heading">
-      <div className="site-container">
-        <SectionLabel>{home.work.label}</SectionLabel>
-        <div className="featured-work__heading">
-          <h2 id="work-heading" className="home-section__heading">{home.work.heading}</h2>
-          <Link href={home.work.all.href} className="editorial-link">{home.work.all.label}<ArrowIcon direction="east" /></Link>
-        </div>
-        <div className="featured-work__rows">
-          {home.work.concepts.map((concept) => (
-            <article key={concept.id} className="featured-concept content-grid">
-              <div className="featured-concept__artwork">
-                {concept.id === "financial-workspace" ? <FinancialWorkspaceArtwork /> : <EverydayMobileArtwork />}
-              </div>
-              <div className="featured-concept__copy">
-                <SectionLabel>{home.work.conceptLabel}</SectionLabel>
-                <h3>{concept.title}</h3>
-                <SectionLabel>{concept.type}</SectionLabel>
-                <p className="featured-concept__summary">{concept.summary}</p>
-                <Link href={concept.href} className="editorial-link">{home.work.viewLabel}<ArrowIcon direction="east" /></Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="home-section" aria-labelledby="work-heading">
+    <SectionHeading label={home.work.label} heading={home.work.heading} headingId="work-heading" supporting={homeLayout.workSupporting} />
+    <div className="featured-work__grid">{home.work.concepts.map(concept => <Card as="article" key={concept.id} surface="white" padding="none" className="featured-concept" shadow="soft">
+      <Link href={concept.href} className="featured-concept__link">
+        <div className="featured-concept__copy"><PillLabel variant="tag">{home.work.conceptLabel}</PillLabel><h3>{concept.title}</h3><p className="featured-concept__type">{concept.type}</p><p>{concept.summary}</p><span className="featured-concept__arrow"><span className="sr-only">{home.work.viewLabel}</span><ArrowIcon direction="east" /></span></div>
+        <div className="featured-concept__artwork">{concept.id === "financial-workspace" ? <FinancialWorkspaceArtwork /> : <EverydayMobileArtwork label={homeLayout.mobilePreviewLabel} />}</div>
+      </Link>
+    </Card>)}</div>
+    <Link href={home.work.all.href} className="editorial-link home-section__link">{home.work.all.label}<ArrowIcon direction="east" /></Link>
+  </section>;
 }

@@ -1,30 +1,25 @@
-import { ArrowIcon } from "@/components/ui/arrow-icon";
 import { ButtonLink } from "@/components/ui/button-link";
-import { SectionLabel } from "@/components/ui/section-label";
+import { Card } from "@/components/ui/card";
+import { PillLabel } from "@/components/ui/pill-label";
 import { home } from "@/content/home";
+import { homeLayout } from "@/content/home-layout";
+import { CubeArtwork } from "./studio-artwork";
 
 export function Hero() {
   const content = home.hero;
-  return (
-    <section className="home-hero" aria-labelledby="hero-heading" data-surface="dark">
-      <div className="site-container home-hero__inner">
-        <SectionLabel>{content.eyebrow}</SectionLabel>
-        <h1 id="hero-heading" className="home-hero__heading">
-          {content.lines.map((line, index) => (
-            <span key={line} className="home-hero__line" data-accent={index === 1}>{line}{index < 2 ? " " : ""}</span>
-          ))}
-        </h1>
-        <p className="home-hero__supporting">{content.supporting}</p>
-        <div className="home-hero__actions">
-          <ButtonLink href={content.primary.href}>{content.primary.label}</ButtonLink>
-          <ButtonLink href={content.secondary.href} variant="secondary">{content.secondary.label}</ButtonLink>
-        </div>
-        <div className="home-hero__aside" aria-hidden="true">
-          <p>{content.note.map((line) => <span key={line}>{line}</span>)}</p>
-          <ArrowIcon direction="down-right" />
-        </div>
-        <p className="home-hero__technologies">{content.technologies}</p>
+  return <section className="home-hero" aria-labelledby="hero-heading">
+    <Card surface="coral" className="home-hero__copy" shadow="soft">
+      <PillLabel>{content.eyebrow}</PillLabel>
+      <h1 id="hero-heading" className="home-hero__heading"><span>{content.lines[0]}</span>{" "}<span>{content.lines.slice(1).join(" ")}</span></h1>
+      <p className="home-hero__supporting">{content.supporting}</p>
+      <div className="home-hero__actions">
+        <ButtonLink href={content.primary.href} variant="primary-dark" arrow="east">{content.primary.label}</ButtonLink>
+        <ButtonLink href={content.secondary.href} variant="quiet" arrow={false}>{content.secondary.label}</ButtonLink>
       </div>
-    </section>
-  );
+    </Card>
+    <Card surface="lavender" padding="none" className="home-hero__art" shadow="soft">
+      <CubeArtwork labelled />
+      <div className="home-hero__note"><p>{homeLayout.ideasNote}</p><p>{content.note.join(" / ")}</p></div>
+    </Card>
+  </section>;
 }

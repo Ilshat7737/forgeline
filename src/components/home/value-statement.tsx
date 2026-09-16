@@ -1,19 +1,17 @@
-import { SectionLabel } from "@/components/ui/section-label";
+import { Card, type CardSurface } from "@/components/ui/card";
+import { Icon, type IconName } from "@/components/ui/icon";
 import { home } from "@/content/home";
-
+import { homeLayout } from "@/content/home-layout";
+const surfaces: CardSurface[] = ["dark", "lavender", "coral"];
+const icons: IconName[] = ["cube", "layers", "users"];
 export function ValueStatement() {
-  return (
-    <section id="about" className="home-section home-section--light" data-surface="light" aria-labelledby="about-heading">
-      <div className="site-container">
-        <SectionLabel>{home.about.label}</SectionLabel>
-        <div className="value-statement content-grid">
-          <h2 id="about-heading" className="home-display">{home.about.heading}</h2>
-          <div className="value-statement__body">
-            <p>{home.about.body}</p>
-            <SectionLabel className="value-statement__note">{home.about.note}</SectionLabel>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <Card as="section" id="about" className="about-card" aria-labelledby="about-heading" shadow="soft">
+    <div className="about-card__copy">
+      <p className="section-heading__label">{home.about.label}</p>
+      <h2 id="about-heading">{home.about.heading.split(". ").map((line, index) => <span key={line}>{line}{index === 0 ? ". " : ""}</span>)}</h2>
+      <p>{home.about.body}</p>
+      <p className="about-card__note">{home.about.note}</p>
+    </div>
+    <div className="about-tiles">{homeLayout.aboutTiles.map((tile, index) => <Card key={tile.title} surface={surfaces[index]} radius="tile" padding="sm"><Icon name={icons[index]} /><h3>{tile.title}</h3><p>{tile.body}</p></Card>)}</div>
+  </Card>;
 }

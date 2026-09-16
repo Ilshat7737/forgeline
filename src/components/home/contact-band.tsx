@@ -1,18 +1,12 @@
-import { ButtonLink } from "@/components/ui/button-link";
-import { SectionLabel } from "@/components/ui/section-label";
+import { EnquiryForm } from "@/components/contact/enquiry-form";
+import { Card } from "@/components/ui/card";
 import { home } from "@/content/home";
-
+import { legalDocuments } from "@/content/legal";
+import { isLegalDocumentPublished } from "@/lib/legal";
+import { CubeArtwork } from "./studio-artwork";
 export function ContactBand() {
-  return (
-    <section className="home-section contact-band" data-surface="dark" aria-labelledby="contact-heading">
-      <div className="site-container">
-        <SectionLabel>{home.contact.label}</SectionLabel>
-        <h2 id="contact-heading" className="contact-band__heading">{home.contact.heading}</h2>
-        <div className="contact-band__bottom">
-          <p>{home.contact.body}</p>
-          <ButtonLink href={home.contact.cta.href}>{home.contact.cta.label}</ButtonLink>
-        </div>
-      </div>
-    </section>
-  );
+  return <Card as="section" surface="lavender" className="home-contact" aria-labelledby="contact-heading" shadow="soft">
+    <div className="home-contact__copy"><p className="section-heading__label">{home.contact.label}</p><h2 id="contact-heading">{home.contact.heading}</h2><p>{home.contact.body}</p><CubeArtwork variant="scatter" /></div>
+    <div className="home-contact__form"><EnquiryForm compact defaults={{ services: [], project: "" }} privacyHref={isLegalDocumentPublished(legalDocuments.privacyPolicy) ? legalDocuments.privacyPolicy.path : undefined} /></div>
+  </Card>;
 }

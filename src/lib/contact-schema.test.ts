@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { contactErrors } from "@/content/contact";
-import { contactSchema } from "./contact-schema";
+import { contactSchema, shortContactSchema } from "./contact-schema";
 
 const valid = {
   name: "Alex Morgan",
@@ -56,5 +56,25 @@ describe("contact schema", () => {
 
   it("rejects unknown service options", () => {
     expect(errorFor({ ...valid, services: ["blockchain"] }, "services")).toBe(contactErrors.services);
+  });
+});
+
+describe("short contact schema shared with the full form", () => {
+  it("accepts only the three required fields and strips full-form properties", () => {
+    const parsed = shortContactSchema.parse({ ...valid, name: "  Alex Morgan  ", services: ["unknown"], ndaRequested: true });
+    expect(parsed).toEqual({ name: "Alex Morgan", email: valid.email, project: valid.project });
+    expect(contactSchema.safeParse({ ...parsed, services: [], ndaRequested: false }).success).toBe(true);
+  });
+
+  it.each([
+    ["name", "A"], ["name", " ".repeat(3)], ["name", "A".repeat(101)],
+    ["email", "alex@"], ["email", "a".repeat(250) + "@example.com"],
+    ["project", "short"], ["project", "A".repeat(4001)],
+  ])("uses identical validation in both forms for %s", (field, value) => {
+    const input = { ...valid, [field]: value };
+    const short = shortContactSchema.safeParse(input);
+    const full = contactSchema.safeParse(input);
+    expect(short.success).toBe(false);
+    expect(short.error?.issues).toEqual(full.error?.issues);
   });
 });

@@ -9,9 +9,9 @@ type FeaturedConcept = EditorialEntry & {
 };
 type HomeContent = {
   hero: { eyebrow: string; lines: readonly [string, string, string]; supporting: string; primary: NavigationLink; secondary: NavigationLink; technologies: string; note: readonly string[] };
-  about: { label: string; heading: string; body: string; note: string };
+  about: { label: string; heading: string; body: string; note: string; link: NavigationLink };
   services: { label: string; heading: string; discuss: string; all: NavigationLink };
-  process: { heading: string; steps: readonly { title: string; body: string }[] };
+  process: { heading: string; link: NavigationLink; steps: readonly { title: string; body: string }[] };
   insights: { label: string; heading: string; status: string; entries: readonly EditorialEntry[] };
   work: { label: string; heading: string; conceptLabel: "CONCEPT"; viewLabel: string; all: NavigationLink; concepts: readonly FeaturedConcept[] };
   contact: { label: string; heading: string; body: string; cta: NavigationLink };
@@ -32,6 +32,7 @@ export const home = {
     heading: "Your challenge. Our team.",
     body: "Build a new product. Improve the system you already have. Add expertise where your team needs it. We work with you to understand the business problem, make technical choices visible and deliver software your team can own.",
     note: "PRODUCT THINKING / DESIGN / ENGINEERING / QUALITY",
+    link: { label: "About us", href: "/about" },
   },
   services: {
     label: "SERVICES", heading: "From strategy to a stable release.",
@@ -40,6 +41,7 @@ export const home = {
   },
   process: {
     heading: "How we begin.",
+    link: { label: "Our approach", href: "/approach" },
     steps: [
       { title: "First conversation", body: "Tell us about your goals, users and current constraints." },
       { title: "Understand the problem", body: "We review the available evidence and identify the questions that need answers." },

@@ -79,7 +79,8 @@
     outline: 2px solid var(--surface-focus);
     outline-offset: 4px;
   }
-  [id] { scroll-margin-top: calc(var(--layout-header-height) + var(--space-6)); }
+  /* Offsets only for remaining in-page destinations: skip link, top, services and work concepts. */
+  :is(#main-content, #top, #services, .concept-section[id]) { scroll-margin-top: calc(var(--layout-header-height) + var(--space-6)); }
   ::selection { background: var(--color-lavender-300); color: var(--color-plum-950); }
   button, a { -webkit-tap-highlight-color: transparent; }
   button { cursor: pointer; }

@@ -1,0 +1,9 @@
+@layer components {
+  .delivery-principles { display: grid; gap: var(--layout-gutter); }
+  .delivery-principles svg { width: 2rem; height: 2rem; margin-bottom: 1.5rem; }
+  .delivery-principles :is(h2, h3) { font-size: var(--type-heading-md); }
+  .delivery-principles p { margin-top: 1rem; max-width: 38ch; color: var(--surface-muted); font-size: var(--type-body-sm); }
+}
+@media (min-width: 640px) {
+  .delivery-principles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

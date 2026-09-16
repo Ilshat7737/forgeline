@@ -5,11 +5,12 @@ from `software-agency-page-map-and-copy-en.md` (the **copy map**) that V1 needs,
 
 ## 0. Source priority
 
-1. **Spec** — structure, routes, sections, behavior, and any copy it defines verbatim. Always wins.
-2. **This brief** — resolved decisions and extra copy the spec does not define.
-3. **Copy map** — do not read or implement it directly. It describes ~120 pages; V1 has four.
+1. **Redesign brief and approved redesign stages** — override earlier visual and route decisions. Stage 8 adds `/approach` and `/about`.
+2. **Spec** — structure, sections, behavior and copy except where superseded by the approved redesign.
+3. **This brief** — resolved decisions and extra copy the spec does not define.
+4. **Copy map** — do not read or implement it directly. It describes ~120 pages; V1 has six main routes, plus gated legal pages.
 
-Ignore from the copy map: every route other than `/`, `/services`, `/work`, `/contact` and the not-found screen;
+Ignore from the copy map: every route other than `/`, `/services`, `/work`, `/contact`, `/approach`, `/about` and the not-found screen;
 `/case-studies` and concept detail routes, `/services/*`, `/guides/*`, `/webinars/*`, `/about-us`, `/hello`,
 `/search`, `/careers`, `/contact/thank-you`, legal pages, Resources nav item, Technologies/Industries/Resources
 footer columns, search, pagination, cookie UI, social links, compact home form, "Product design" filter.
@@ -27,7 +28,7 @@ Keep the name in one constant (`src/content/site.ts`). No `[BRACKETED]` placehol
 
 ## 2. Shared shell
 
-**Header** — as spec §6 (Services, Work, Approach, About; CTA "Discuss your project").
+**Header** — Services → `/services`, Work → `/work`, Approach → `/approach`, About → `/about`; CTA "Discuss your project" → `/contact`. The same routes apply in the mobile menu and footer. The current header route uses `aria-current="page"` in the generated HTML.
 Mobile menu button accessible names: **Open menu** / **Close menu**. Nav landmark label: **Main navigation**.
 Skip link: **Skip to main content**.
 
@@ -45,7 +46,7 @@ All copy from spec §7. Additions/decisions:
 - Hero, services accordion descriptions, process copy: **use the spec wording** (copy map variants are older).
 - Accordion toggles expose state via `aria-expanded`; visually-hidden helper text on the icon: **Expand details** /
   **Collapse details**.
-- About section: no "How we work" link (its route does not exist in V1).
+- About and process blocks retain their complete copy as teasers. Add **About us** → `/about` and **Our approach** → `/approach`, using the existing editorial link style. Remove the former fragment targets and their scroll offsets. The decorative strip’s **Scroll on** link targets the existing `#services` section.
 - Perspectives: no links (spec §7.5). Copy map guide links are dropped.
 - Featured work link label: **View concept** (matches Work page cards).
 
@@ -293,3 +294,49 @@ Unknown values are ignored. `?project=<concept id>` behaves as spec §10.3.
 
 Use the spec §15 table with `[COMPANY_NAME]` = Forgeline. Work meta description:
 "Explore illustrative web, mobile, desktop and operational product concepts from Forgeline."
+
+
+## 9. About `/about` — redesign stage 8
+
+Typed source: `src/content/about.ts`. No team cards, photos, names, roles, headcount or staff placeholders.
+
+- Title: **About Us | Forgeline**
+- Meta description and introduction: **We help businesses turn complex requirements into software people can use and teams can maintain.**
+- Eyebrow: **ABOUT**
+- H1: **A team that connects product thinking with engineering.**
+
+**Why we do this**
+> A useful product needs more than a feature list. It needs a clear problem, considered trade-offs and people who take responsibility for what happens after release. That is the kind of work we want to do.
+
+**Clarity before activity**
+> We ask questions, document decisions and explain the consequences of technical choices. Progress should be understandable to the people responsible for the business.
+
+**Ownership through delivery**
+> We consider implementation, testing, deployment and operation together. The goal is working software with a team that understands how to change it.
+
+**A stronger team at the end**
+> We share context and knowledge throughout the engagement. Your team should gain capability as the product develops.
+
+Reuse `home.about` by reference: **Your challenge. Our team.**, its full paragraph and **PRODUCT THINKING / DESIGN / ENGINEERING / QUALITY** note.
+
+**The people behind the work**
+> Product, analysis, design, engineering and quality work together around the same outcome.
+
+CTA heading: **Start with a conversation**
+> Tell us what your team is working through. We will be direct about where we can help and what we need to understand first.
+
+CTA button: **Meet your delivery partner** → `/contact`.
+
+## 10. Approach `/approach` — redesign stage 8
+
+Typed source: `src/content/approach.ts`.
+
+- Title: **Our Approach | Forgeline**
+- Meta description and introduction: reuse `homeLayout.processSupporting` — **A clear process, from the first conversation to the start of development.**
+- Eyebrow: **HOW WE WORK**
+- H1: **How we work.**
+- **How we begin**: import `home.process.steps`; render the same four process cards as Home.
+- **Delivery principles**: import `servicesPage.principles`; these same objects remain on Services.
+- CTA card: import `home.contact` (label, heading, body and CTA), with its button to `/contact`.
+
+Both new routes use `pageMetadata(...)` for canonical, Open Graph and Twitter metadata and appear in the sitemap. Each has one H1, ordered headings and unique landmark labels. Concept 02 cards, pill controls and decorative existing cube/slab artwork use the established measured surface tokens.

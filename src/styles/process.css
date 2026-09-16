@@ -1,0 +1,18 @@
+@layer components {
+  .process-steps { display: grid; gap: var(--layout-gutter); }
+  .process-steps > li { position: relative; }
+  .process-step { height: 100%; }
+  .process-step__top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; font-size: 0.875rem; }
+  .process-step__icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--color-surface-lavender); }
+  .process-step h3 { font-size: 1.125rem; margin-bottom: 1rem; }
+  .process-step p { font-size: 0.875rem; color: var(--surface-muted); }
+  .process-step__connector { display: none; }
+}
+@media (min-width: 640px) {
+  .process-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .process-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .process-step { padding: 1.5rem; }
+  .process-step__connector { display: block; position: absolute; width: 1.25rem; height: 1.25rem; right: calc(-0.625rem - var(--layout-gutter) / 2); top: 48%; z-index: 1; background: var(--color-canvas); }
+}

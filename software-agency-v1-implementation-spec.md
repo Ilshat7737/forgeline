@@ -291,8 +291,8 @@ Routes:
 
 - Services → `/services`
 - Work → `/work`
-- Approach → `/#approach`
-- About → `/#about`
+- Approach → `/approach`
+- About → `/about`
 - Discuss your project → `/contact`
 
 Behavior:
@@ -375,7 +375,7 @@ Motion:
 - Do not hide the text before hydration.
 - Disable transforms when `prefers-reduced-motion: reduce` is set.
 
-### 7.2 Value statement — `#about`
+### 7.2 Value statement — Home teaser linking to `/about`
 
 Use a pale lavender background with plum text and a two-column layout.
 
@@ -428,7 +428,7 @@ Behavior:
 - Animate panel height and opacity only if motion is allowed.
 - Link beneath the section: **View all services** → `/services`.
 
-### 7.4 Process — `#approach`
+### 7.4 Process — Home teaser linking to `/approach`
 
 Use a pale lavender background. Heading: **HOW WE BEGIN.**
 

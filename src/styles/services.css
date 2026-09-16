@@ -50,10 +50,6 @@
   .technology-strip__names li { white-space: nowrap; }
   .technology-strip__cue { position: absolute; z-index: 1; right: 0; top: 1rem; color: var(--color-text-on-dark); pointer-events: none; }
 
-  .delivery-principles { display: grid; gap: var(--layout-gutter); }
-  .delivery-principles svg { width: 2rem; height: 2rem; margin-bottom: 1.5rem; }
-  .delivery-principles h2 { font-size: var(--type-heading-md); }
-  .delivery-principles p { margin-top: 1rem; max-width: 38ch; color: var(--surface-muted); font-size: var(--type-body-sm); }
   .services-cta { margin-top: 1rem; padding-block: clamp(2rem, 4vw, 3.5rem); }
   .services-cta h2 { max-width: 22ch; font-size: var(--type-heading-lg); }
   .services-cta__bottom { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; margin-top: 1.5rem; }
@@ -64,7 +60,6 @@
 @media (min-width: 640px) {
   .service-selector__tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .service-group__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .delivery-principles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (min-width: 1024px) {

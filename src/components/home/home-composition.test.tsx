@@ -49,6 +49,6 @@ describe("Home composition semantics", () => {
     expect(image.firstElementChild?.getAttribute("aria-hidden")).toBe("true");
     expect(within(image).queryByRole("list")).toBeNull();
     expect(screen.queryByRole("progressbar")).toBeNull();
-    expect(screen.getByRole("link", { name: homeLayout.scroll }).getAttribute("href")).toBe("#about");
+    expect(screen.getByRole("link", { name: homeLayout.scroll }).getAttribute("href")).toBe("#services");
   });
 });

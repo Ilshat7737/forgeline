@@ -25,14 +25,6 @@ export function MobileMenu() {
     return () => window.removeEventListener("scroll", updateSticky);
   }, []);
 
-  useEffect(() => {
-    const links = buttonRef.current?.closest("header")?.querySelectorAll("a[data-header-link]");
-    links?.forEach((link) => {
-      if (link.getAttribute("href") === pathname) link.setAttribute("aria-current", "page");
-      else link.removeAttribute("aria-current");
-    });
-  }, [pathname]);
-
   function closeMenu() {
     setIsOpen(false);
     buttonRef.current?.focus();

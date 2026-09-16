@@ -18,6 +18,6 @@ export function StudioStrip() {
         <div className="status-card__track"><span /></div>
       </div>
     </Card>
-    <Card surface="dark" padding="none" className="scroll-card" shadow="soft"><a href="#about"><span>{homeLayout.scroll}</span><ArrowIcon direction="south" variant="long" /></a></Card>
+    <Card surface="dark" padding="none" className="scroll-card" shadow="soft"><a href="#services"><span>{homeLayout.scroll}</span><ArrowIcon direction="south" variant="long" /></a></Card>
   </div>;
 }

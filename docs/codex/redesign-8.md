@@ -1,7 +1,7 @@
 # Redesign stage 8 — Approach and About as standalone pages
 
 Read `AGENTS.md`, `docs/redesign-brief.md` and spec §6, §12, §14, §15. Run this **after** redesign stage 7.
-Today `Approach` and `About` are anchors on Home (`/#approach`, `/#about`). They become real routes.
+`Approach` and `About` become standalone routes (`/approach`, `/about`); Home retains both sections as teasers.
 
 ## Routes
 
@@ -52,7 +52,7 @@ content files (`src/content/approach.ts`, `src/content/about.ts`) and add both p
   work" links. Do not shorten or rewrite the blocks themselves.
 - Remove the now-unused `id="about"` / `id="approach"` anchors and the scroll-offset handling that existed for them.
 - `src/content/navigation.ts`: `Approach` → `/approach`, `About` → `/about`, in the header, the mobile menu and the
-  footer. Update every other internal reference to `/#approach` or `/#about` in the repo, including
+  footer. Update every other internal reference to the former Home fragments in the repo, including
   `docs/v1-content-brief.md`.
 - Both routes get `pageMetadata(...)` with canonical, Open Graph and Twitter, and both are added to
   `src/app/sitemap.ts`. The placeholder guard test must keep passing.
@@ -61,6 +61,6 @@ content files (`src/content/approach.ts`, `src/content/about.ts`) and add both p
 
 Lint, typecheck, tests and production build. Confirm in the generated HTML: one `h1` per new page, correct heading
 order, unique landmark labels, both routes return 200, the header marks the current route with `aria-current`, and
-no link anywhere still points at `/#about` or `/#approach`.
+no link anywhere still points at the former Home About or Approach fragments.
 
 Report changed files, the structure you chose for each page, and any contrast pairing you adjusted.

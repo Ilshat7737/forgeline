@@ -46,7 +46,7 @@
   .about-tiles svg { width: 2rem; height: 2rem; margin-bottom: 1.5rem; }
   .about-tiles h3 { font-size: 1rem; margin-bottom: 0.75rem; }
   .about-tiles p { color: var(--surface-muted); font-size: 0.8125rem; }
-  .services-grid, .process-steps, .insight-entries, .featured-work__grid { display: grid; gap: var(--home-gap); }
+  .services-grid, .insight-entries, .featured-work__grid { display: grid; gap: var(--home-gap); }
   .service-card a { display: flex; flex-direction: column; height: 100%; padding: 1.5rem; border-radius: inherit; }
   .service-card a > svg:first-child { width: 2rem; height: 2rem; margin-bottom: 1.25rem; }
   .service-card a:focus-visible, .scroll-card a:focus-visible { outline-offset: -5px; }
@@ -54,13 +54,6 @@
   .service-card p { margin-top: 0.75rem; margin-bottom: 1rem; color: var(--surface-muted); font-size: 0.8125rem; }
   .service-card a > svg:last-child { margin-top: auto; align-self: flex-end; }
   .service-card a:is(:hover, :focus-visible) h3, .featured-concept__link:is(:hover, :focus-visible) h3 { text-decoration: underline; text-underline-offset: 4px; }
-  .process-steps > li { position: relative; }
-  .process-step { height: 100%; }
-  .process-step__top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; font-size: 0.875rem; }
-  .process-step__icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--color-surface-lavender); }
-  .process-step h3 { font-size: 1.125rem; margin-bottom: 1rem; }
-  .process-step p { font-size: 0.875rem; color: var(--surface-muted); }
-  .process-step__connector { display: none; }
   .insight-entry { display: grid; grid-template-columns: minmax(0, 1fr) 34%; align-items: center; overflow: hidden; gap: 0.5rem; }
   .insight-entry h3, .featured-concept h3 { margin-top: 1.25rem; font-size: clamp(1.125rem, 1.6vw, 1.5rem); }
   .insight-entry__copy > p, .featured-concept__copy > p { margin-top: 0.75rem; color: var(--surface-muted); font-size: 0.875rem; }
@@ -127,7 +120,7 @@
   .scroll-card a { flex-direction: column; padding: 1.5rem 0.75rem; }
   .scroll-card svg { height: 6rem; margin-top: auto; }
   .about-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .services-grid, .process-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .featured-concept__link { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .short-enquiry .contact-form__pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -140,10 +133,8 @@
   .technology-card > p { max-width: 7rem; }
   .about-card { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
   .about-tiles .card { display: flex; flex-direction: column; justify-content: center; }
-  .services-grid, .process-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .services-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .service-card a { min-height: 15rem; }
-  .process-step { padding: 1.5rem; }
-  .process-step__connector { display: block; position: absolute; width: 1.25rem; height: 1.25rem; right: calc(-0.625rem - var(--home-gap) / 2); top: 48%; z-index: 1; background: var(--color-canvas); }
   .insight-entries, .featured-work__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .insight-entry { min-height: 19rem; }
   .home-contact { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }

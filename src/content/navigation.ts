@@ -7,8 +7,8 @@ export const navigation = {
   links: [
     { label: "Services", href: "/services" },
     { label: "Work", href: "/work" },
-    { label: "Approach", href: "/#approach" },
-    { label: "About", href: "/#about" },
+    { label: "Approach", href: "/approach" },
+    { label: "About", href: "/about" },
   ],
   contact: { label: "Discuss your project", href: "/contact" },
   menu: { open: "Open menu", close: "Close menu" },

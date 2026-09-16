@@ -26,19 +26,19 @@ const scatter: Cube[] = [
   { x: 203, y: 158, size: 37, dark: true }, { x: 278, y: 133, size: 31, coral: true },
   { x: 142, y: 216, size: 39 }, { x: 73, y: 243, size: 16, coral: true },
 ];
-export function CubeArtwork({ variant = "cluster", labelled = false }: { variant?: "cluster" | "scatter"; labelled?: boolean }) {
-  return <svg className={`cube-artwork cube-artwork--${variant}`} viewBox={variant === "cluster" ? "0 0 480 400" : "35 60 340 270"} role={labelled ? "img" : undefined} aria-label={labelled ? homeLayout.cubesLabel : undefined} aria-hidden={labelled ? undefined : true} focusable="false">
+export function CubeArtwork({ variant = "cluster" }: { variant?: "cluster" | "scatter" }) {
+  return <div className={`cube-artwork cube-artwork--${variant}`} role="img" aria-label={variant === "cluster" ? homeLayout.cubesLabel : homeLayout.scatterLabel}><svg viewBox={variant === "cluster" ? "0 0 480 400" : "35 60 340 270"} aria-hidden="true" focusable="false">
     <ellipse cx="220" cy="342" rx="138" ry="24" fill="#9f76bd" opacity=".12" />
     {(variant === "cluster" ? cluster : scatter).map((cube, index) => <CubeShape key={index} {...cube} />)}
-  </svg>;
+  </svg></div>;
 }
 export function SlabArtwork() {
-  return <svg className="slab-artwork" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+  return <div className="slab-artwork" role="img" aria-label={homeLayout.slabsLabel}><svg viewBox="0 0 300 300" aria-hidden="true" focusable="false">
     {[190, 146, 102].map((y, index) => <g key={y} transform={`translate(30 ${y})`}>
       <path d="m0 0 145-65 110 35-145 70Z" fill={index === 1 ? "#ffb2a3" : "#654a78"} />
       <path d="m0 0 110 40v24L0 24Z" fill={index === 1 ? "#ff8977" : "#392741"} />
       <path d="m110 40 145-70v24L110 64Z" fill={index === 1 ? "#d86f65" : "#25192f"} />
       <path d="m0 0 110 40 145-70" stroke={index === 1 ? "#ffdbd3" : "#8e6da3"} strokeWidth="1" fill="none" />
     </g>)}
-  </svg>;
+  </svg></div>;
 }

@@ -14,7 +14,9 @@ describe("Home composition semantics", () => {
   it("retains the hero wording and gives the cube artwork a single label", () => {
     render(<Hero />);
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe(home.hero.lines.join(" "));
-    expect(screen.getByRole("img", { name: homeLayout.cubesLabel })).toBeTruthy();
+    const artwork = screen.getByRole("img", { name: homeLayout.cubesLabel });
+    expect(artwork.firstElementChild?.getAttribute("aria-hidden")).toBe("true");
+    expect(within(artwork).queryByRole("img")).toBeNull();
   });
   it("replaces the accordion with canonical service links", () => {
     render(<ServicesGrid />);

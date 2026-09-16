@@ -64,7 +64,7 @@ export const serviceSituations = [
 export type ServiceSituationId = (typeof serviceSituations)[number]["id"];
 
 type ServicesPageContent = {
-  hero: { eyebrow: string; heading: string; emphasis: string; introduction: string; cta: NavigationLink };
+  hero: { eyebrow: string; heading: string; introduction: string; cta: NavigationLink };
   selector: { heading: string; relevant: string };
   discuss: string;
   technology: { heading: string; body: string; names: readonly string[] };
@@ -76,7 +76,6 @@ export const servicesPage = {
   hero: {
     eyebrow: "SERVICES",
     heading: pages.services.heading,
-    emphasis: "product needs.",
     introduction: "Bring us a new idea, a delivery challenge or a system that needs to change. Start with the problem; we will help define the right combination of skills.",
     cta: navigation.contact,
   },

@@ -2,14 +2,14 @@ import type { ComponentProps } from "react";
 import { cn } from "@/lib/cn";
 
 export type CardSurface = "white" | "lavender" | "dark" | "coral";
-export type Surface = CardSurface | "canvas" | "light";
+export type Surface = CardSurface | "canvas";
 
 type CardProps = ComponentProps<"div"> & {
   as?: "div" | "article" | "section" | "aside";
   surface?: CardSurface;
   padding?: "none" | "sm" | "md" | "lg";
   radius?: "card" | "tile";
-  shadow?: "none" | "soft" | "card" | "raised";
+  shadow?: "none" | "soft";
 };
 
 export function Card({ as: Element = "div", surface = "white", padding = "md", radius = "card", shadow = "none", className, ...props }: CardProps) {

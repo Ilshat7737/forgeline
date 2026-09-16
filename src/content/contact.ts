@@ -64,7 +64,7 @@ export const contactErrors = {
 
 export const contactPage = {
   hero: {
-    eyebrow: "CONTACT", heading: pages.contact.heading, emphasis: "create or improve?",
+    eyebrow: "CONTACT", heading: pages.contact.heading,
     introduction: "Share a little context about the product, your goals and the constraints you are working with. You do not need a finished specification to start the conversation.",
   },
   supportingPoints: [

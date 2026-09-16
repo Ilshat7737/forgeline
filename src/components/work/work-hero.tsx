@@ -14,7 +14,7 @@ export function WorkHero() {
         <p className="work-hero__note">{content.note}</p>
       </Card>
       <Card surface="lavender" padding="none" shadow="soft" className="work-hero__art">
-        <CubeArtwork labelled />
+        <CubeArtwork />
       </Card>
     </section>
   );

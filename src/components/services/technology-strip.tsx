@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function TechnologyStrip() {
   return (
-    <Card as="section" className="technology-strip" surface="dark" shadow="soft" aria-labelledby="technology-heading">
+    <Card className="technology-strip" surface="dark" shadow="soft">
       <SectionHeading headingId="technology-heading" heading={servicesPage.technology.heading} supporting={servicesPage.technology.body} />
       <div className="technology-strip__fade">
         <div className="technology-strip__scroll" role="region" tabIndex={0} aria-labelledby="technology-heading">

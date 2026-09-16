@@ -43,7 +43,7 @@ describe("mobile navigation", () => {
   it("focuses the first link, marks the current route, and locks the background", () => {
     renderMenu();
     fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
-    const nav = screen.getByRole("navigation", { name: "Main navigation" });
+    const nav = screen.getByRole("navigation", { name: "Mobile navigation" });
     const services = within(nav).getByRole("link", { name: "Services" });
     expect(document.activeElement).toBe(services);
     expect(services.getAttribute("aria-current")).toBe("page");

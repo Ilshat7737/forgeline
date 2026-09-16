@@ -91,7 +91,7 @@ export const workConcepts = [
 export type WorkConceptId = (typeof workConcepts)[number]["id"];
 
 type WorkPageContent = {
-  hero: { eyebrow: string; heading: string; emphasis: string; introduction: string; note: string };
+  hero: { eyebrow: string; heading: string; introduction: string; note: string };
   collectionHeading: string;
   filterLabel: string;
   showing: string;
@@ -114,7 +114,7 @@ type WorkPageContent = {
 
 export const workPage = {
   hero: {
-    eyebrow: "WORK", heading: pages.work.heading, emphasis: "Clear directions.",
+    eyebrow: "WORK", heading: pages.work.heading,
     introduction: "Explore illustrative product scenarios across web, mobile, desktop and operational software. Each concept shows how we turn a workflow problem into a product direction.",
     note: "These are illustrative concepts, not completed client engagements or measured client results.",
   },

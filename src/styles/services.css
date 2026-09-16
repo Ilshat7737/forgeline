@@ -69,7 +69,9 @@
 
 @media (min-width: 1024px) {
   .services-hero { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
-  .service-group__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .service-group__grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .service-group__grid > li { grid-column: span 2; }
+  .service-group__grid > li:nth-child(n + 4) { grid-column: span 3; }
   .services-cta__bottom { flex-direction: row; justify-content: space-between; align-items: flex-end; }
 }
 

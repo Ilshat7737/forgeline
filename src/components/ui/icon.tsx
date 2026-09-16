@@ -2,6 +2,8 @@ import type { SVGProps } from "react";
 
 // Original 24px drawings, shared rounded 1.75px strokes, no external icon assets.
 const paths = {
+  check: "m5 12 4 4L19 6",
+  sparkle: "m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2Z",
   globe: "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM3 12h18M5 6.5c4 2 10 2 14 0M5 17.5c4-2 10-2 14 0M12 3c-5 5-5 13 0 18 5-5 5-13 0-18Z",
   mobile: "M7 3h10a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1ZM10 6h4M11.5 18h1",
   brain: "M12 5c-1-4-7-2-6 2-4 0-5 6-1 7-2 4 3 7 5 5 0 3 2 2 2 0V5Zm0 0c1-4 7-2 6 2 4 0 5 6 1 7 2 4-3 7-5 5 0 3-2 2-2 0M6 7l2 2M5 14h3l1 2M18 7l-2 2M19 14h-3l-1 2",

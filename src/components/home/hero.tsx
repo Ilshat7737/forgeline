@@ -18,7 +18,7 @@ export function Hero() {
       </div>
     </Card>
     <Card surface="lavender" padding="none" className="home-hero__art" shadow="soft">
-      <CubeArtwork labelled />
+      <CubeArtwork />
       <div className="home-hero__note"><p>{homeLayout.ideasNote}</p><p>{content.note.join(" / ")}</p></div>
     </Card>
   </section>;

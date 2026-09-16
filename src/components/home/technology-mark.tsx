@@ -8,5 +8,5 @@ const marks: Record<string, ReactNode> = {
   AWS: <><path d="M4 13h7v14H4v-7h7m5-7 3 14 4-10 4 10 3-14m14 1h-8v6h8v7h-8M4 34c11 9 27 9 39 0m-9-1 10-1-2 9" /></>,
 };
 export function TechnologyMark({ name }: { name: string }) {
-  return <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{marks[name]}</svg>;
+  return <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{marks[name]}</svg>;
 }

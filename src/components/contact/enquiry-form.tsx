@@ -66,7 +66,7 @@ export function EnquiryForm({ defaults, privacyHref, compact = false }: { defaul
   if (result?.status === "success") return <ContactSuccess development={result.development} />;
 
   return (
-    <section className={compact ? "short-enquiry" : undefined} aria-labelledby="contact-form-heading">
+    <div className={compact ? "short-enquiry" : undefined}>
       <h2 id="contact-form-heading" className={compact ? "sr-only" : undefined}>{contactPage.formHeading}</h2>
       {showSummary && (
         <div className="contact-error-summary" ref={summary} tabIndex={-1} aria-labelledby="contact-error-heading">
@@ -107,11 +107,11 @@ export function EnquiryForm({ defaults, privacyHref, compact = false }: { defaul
           {privacyHref && <> <Link href={privacyHref} className="contact-form__privacy-link">{contactPage.privacyLink}</Link></>}
         </p>
         {result?.status === "error" && <p className="contact-form__failure" role="alert">{result.code === "not-configured" ? contactErrors.notConfigured : contactErrors.general}</p>}
-        <button type="submit" className="button-link button-link--primary contact-form__submit" data-surface="light" disabled={isSubmitting}>
+        <button type="submit" className="button-link button-link--primary-coral contact-form__submit" data-surface="white" disabled={isSubmitting}>
           <span>{isSubmitting ? contactPage.pending : contactPage.submit}</span>
           <ArrowIcon direction={compact ? "east" : "northeast"} className="button-link__arrow shrink-0" />
         </button>
       </form>
-    </section>
+    </div>
   );
 }

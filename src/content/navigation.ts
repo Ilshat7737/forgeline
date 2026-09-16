@@ -2,6 +2,7 @@ export type NavigationLink = { label: string; href: string };
 
 export const navigation = {
   label: "Main navigation",
+  mobileLabel: "Mobile navigation",
   footerLabel: "Footer navigation",
   links: [
     { label: "Services", href: "/services" },
@@ -13,6 +14,7 @@ export const navigation = {
   menu: { open: "Open menu", close: "Close menu" },
 } as const satisfies {
   label: string;
+  mobileLabel: string;
   footerLabel: string;
   links: readonly NavigationLink[];
   contact: NavigationLink;

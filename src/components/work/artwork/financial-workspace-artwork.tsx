@@ -1,3 +1,5 @@
+import { Icon } from "@/components/ui/icon";
+import { ArrowIcon } from "@/components/ui/arrow-icon";
 import type { CSSProperties } from "react";
 import { artwork } from "@/content/artwork";
 
@@ -9,7 +11,7 @@ export function FinancialWorkspaceArtwork() {
     <div className="product-artwork financial-artwork" role="img" aria-label={content.alt}>
       <div className="financial-dashboard" aria-hidden="true">
         <aside className="financial-dashboard__sidebar">
-          <span className="artwork-emblem">✳</span>
+          <span className="artwork-emblem"><Icon name="sparkle" /></span>
           {content.navigation.map((item, index) => <span key={item} className="financial-dashboard__nav" data-active={index === 0}><i />{item}</span>)}
           <span className="financial-dashboard__sidebar-rule" />
         </aside>
@@ -28,7 +30,7 @@ export function FinancialWorkspaceArtwork() {
               <p>{content.activityLabel}</p>
               {content.accounts.map((account) => (
                 <div key={account.name} className="financial-dashboard__record">
-                  <span className="financial-dashboard__avatar">↗</span>
+                  <span className="financial-dashboard__avatar"><ArrowIcon /></span>
                   <div><span>{account.name}</span><small>{account.status}</small></div>
                   <span>{account.amount}</span>
                 </div>

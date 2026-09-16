@@ -1,13 +1,20 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/cn";
-import { ArrowIcon } from "./arrow-icon";
-import type { ButtonAppearance } from "./button";
+import { ArrowIcon, type ArrowDirection } from "./arrow-icon";
+import type { Surface } from "./card";
+
+type ButtonAppearance = {
+  variant?: "primary-dark" | "primary-coral" | "quiet";
+  /** The surrounding surface determines the focus ring, not the button fill. */
+  surface?: Surface;
+  arrow?: ArrowDirection | false;
+};
 
 type ButtonLinkProps = ComponentProps<typeof Link> & ButtonAppearance;
 
 export function ButtonLink({
-  variant = "primary",
+  variant = "primary-coral",
   surface,
   arrow = "east",
   className,

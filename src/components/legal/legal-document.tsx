@@ -29,7 +29,7 @@ export function LegalDocumentPage({ document }: { document: LegalDocument }) {
         </p>
       </Card>
       <Card surface="white" padding="lg" shadow="soft" className="legal-panel">
-        <Card as="aside" surface="lavender" radius="tile" padding="sm" className="legal-contents-card">
+        <Card surface="lavender" radius="tile" padding="sm" className="legal-contents-card">
           <nav className="legal-contents" aria-label={legalUi.contentsLabel}>
             <p className="legal-contents__title" aria-hidden="true">{legalUi.contentsLabel}</p>
             <ol>

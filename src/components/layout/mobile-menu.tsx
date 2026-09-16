@@ -111,7 +111,7 @@ export function MobileMenu() {
         </span>
       </button>
       <div ref={panelRef} id={panelId} className="mobile-menu__panel" data-surface="white" hidden={!isOpen}>
-        <nav aria-label={navigation.label} className="site-container">
+        <nav aria-label={navigation.mobileLabel} className="site-container">
           {navigation.links.map((link) => (
             <Link
               key={link.href}

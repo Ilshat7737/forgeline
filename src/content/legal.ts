@@ -16,7 +16,6 @@ export type LegalFacts = {
   otherPurposesAndLegalBases: string | null;
   recipients: string | null;
   retention: string | null;
-  internationalProcessing: string | null;
   rightsAndComplaints: string | null;
   cookieInventory: string | null;
   permittedUse: string | null;
@@ -30,29 +29,26 @@ export const legalFacts: LegalFacts = {
   legalEntityName: "Forgeline",
   // No registered company yet: the owner is identified by name and contactable by email (optional fact).
   registeredAddress: null,
-  privacyContact: "privacy@forgeline.tech",
-  publicContactDetails: "privacy@forgeline.tech",
+  privacyContact: "tech-forgeline@outlook.com",
+  publicContactDetails: "tech-forgeline@outlook.com",
   effectiveDate: "16 September 2026",
   technicalData:
-    "Our web server keeps standard access logs — IP address, time of the request, the address requested, the referring page and the browser user agent — so that we can keep the site available and investigate errors or abuse. The website itself runs no analytics and sets no cookies.",
+    "Our web server keeps standard access logs - IP address, time of the request, the address requested, the referring page, and the browser user agent - so that we can keep the site available and investigate errors or abuse. The website itself runs no analytics and sets no cookies.",
   otherCollectionSources: null,
   otherPurposesAndLegalBases:
-    "We rely on our legitimate interest in answering business enquiries (Article 6(1)(f) GDPR) for the details you send us, and on the same legitimate interest in keeping the website secure and available for server log data. We do not use your details for marketing and we do not profile you.",
+    "We rely on our legitimate interest in answering business enquiries for the details you send us, and on the same legitimate interest in keeping the website secure and available for server log data. We do not use your details for marketing and we do not profile you.",
   recipients:
-    "Our hosting provider runs the server on our behalf inside the European Union. If you write to us by email, our email provider handles that message. We do not sell personal information and we do not pass enquiry details to anyone else unless the law requires it.",
+    "If you write to us by email, our email provider handles that message. We do not sell personal information and we do not pass enquiry details to anyone else unless the law requires it.",
   retention:
     "The website form currently stores nothing: it neither saves nor forwards what you type, so no enquiry data exists on our side until a delivery provider is connected. Once one is, we will keep enquiry details for 12 months after our last exchange and delete them afterwards. Server access logs are rotated on a regular schedule and are not kept longer than we need them for security and troubleshooting.",
-  internationalProcessing:
-    "The website and its server run inside the European Union, and we do not transfer personal information outside the EU or the European Economic Area.",
   rightsAndComplaints:
-    "Under the GDPR you can ask for a copy of your personal information, ask us to correct or erase it, ask us to restrict or object to our use of it, and ask to receive it in a portable form. Write to privacy@forgeline.tech and we will answer within one month. If you believe we have handled your information incorrectly, you can complain to the Estonian Data Protection Inspectorate (Andmekaitse Inspektsioon, www.aki.ee) or to the supervisory authority in your own country.",
-  cookieInventory:
-    "This website sets no cookies and uses no analytics, advertising or tracking technologies. It stores nothing in your browser's local or session storage, so there is nothing here to consent to or switch off.",
+    "Under applicable data protection law, you can ask for a copy of your personal information, ask us to correct or erase it, ask us to restrict or object to our use of it, and ask to receive it in a portable form. Write to tech-forgeline@outlook.com and we will answer within one month.",
+  cookieInventory: "This website sets no cookies and uses no analytics, advertising, or tracking technologies.",
   permittedUse:
-    "You may read, quote and share these pages for your own information and to evaluate our services, with a link or a clear reference back to the source. The text, design, code, product concepts and illustrations are ours and remain ours: please do not republish them as your own, use them commercially or collect them automatically for resale or model training without our written permission. Do not attempt to disrupt, overload or gain unauthorised access to the website.",
+    "You may read, quote, and share these pages for your own information and to evaluate our services, provided you include an active link or a clear reference back to the source. The text, design, code, product concepts, and illustrations are ours and remain our intellectual property. Please do not republish them as your own, use them commercially, or collect them automatically for resale or machine learning model training without our written permission. Do not attempt to disrupt, overload, or gain unauthorized access to the website.",
   externalLinkProvisions: null,
   liabilityAndGoverningLaw:
-    "The website is provided as it is. We keep it accurate and available as far as we reasonably can, but we do not guarantee uninterrupted access or that every page is free of errors. Nothing on the website is an offer, a quote or professional advice: any work we do together is governed by the contract we sign for it. To the extent the law allows, we are not liable for indirect or consequential loss arising from use of the website. These terms are governed by Estonian law, and disputes belong to the courts of Estonia unless mandatory consumer rules give you another option.",
+    'The website is provided on an "as is" basis. We make reasonable efforts to keep it accurate and available, but we do not guarantee uninterrupted access or that every page is free of errors. Nothing on the website constitutes a public offer, a quote, or professional advice: any collaboration is governed exclusively by a separately signed contract. To the extent permitted by law, we are not liable for indirect or consequential loss arising from the use of the website. These terms are governed by the laws of Panama, and any disputes shall be subject to the jurisdiction of the courts of Panama, unless mandatory consumer protection rules provide otherwise.',
 };
 
 /**
@@ -73,7 +69,6 @@ export const legalFactLabels: Record<LegalFactKey, string> = {
   otherPurposesAndLegalBases: "Other purposes and their legal bases",
   recipients: "Hosting, form, email and other recipients and their roles",
   retention: "Retention period or criteria for each data category",
-  internationalProcessing: "Processing locations and transfer arrangements",
   rightsAndComplaints: "Applicable rights, request process and complaint information",
   cookieInventory: "Verified cookie and tracker inventory",
   permittedUse: "Permitted use, content rights and prohibited use",
@@ -102,6 +97,7 @@ export type LegalDocument = {
 export const legalUi = {
   eyebrow: "LEGAL",
   contentsLabel: "On this page",
+  lastUpdatedLabel: "Last updated",
   missing: "Needs legal input",
   draftNotice: "Development preview. This page is hidden in production until every required legal fact is supplied.",
   footerLabel: "Legal",
@@ -115,7 +111,7 @@ const privacyPolicy: LegalDocument = {
   introduction: {
     kind: "template",
     facts: ["legalEntityName"],
-    render: (f) => `This notice explains how ${f.legalEntityName} handles personal information when you use this website or contact us.`,
+    render: (f) => `This personal data processing policy explains how the ${f.legalEntityName} project handles personal information when you use this website or contact us.`,
   },
   sections: [
     {
@@ -125,7 +121,7 @@ const privacyPolicy: LegalDocument = {
         {
           kind: "template",
           facts: ["legalEntityName", "privacyContact"],
-          render: (f) => `${f.legalEntityName} is responsible for the processing described in this notice. You can contact us at ${f.privacyContact}.`,
+          render: (f) => `The ${f.legalEntityName} project is responsible for the processing described in this personal data processing policy. You can contact us at ${f.privacyContact}.`,
         },
         // Rendered only once a registered address exists.
         { kind: "fact", fact: "registeredAddress" },
@@ -135,7 +131,7 @@ const privacyPolicy: LegalDocument = {
       id: "information-we-handle",
       title: "Information we handle",
       paragraphs: [
-        { kind: "text", text: "When you contact us, we process the information you provide in the form or message, such as your name, contact details and enquiry." },
+        { kind: "text", text: "When you contact us, we process the information you provide in the form or message, such as your name, contact details, and enquiry." },
         { kind: "fact", fact: "technicalData" },
         { kind: "fact", fact: "otherCollectionSources" },
       ],
@@ -150,7 +146,6 @@ const privacyPolicy: LegalDocument = {
     },
     { id: "service-providers", title: "Service providers and disclosures", paragraphs: [{ kind: "fact", fact: "recipients" }] },
     { id: "retention", title: "Retention", paragraphs: [{ kind: "fact", fact: "retention" }] },
-    { id: "international-processing", title: "International processing", paragraphs: [{ kind: "fact", fact: "internationalProcessing" }] },
     {
       id: "your-choices",
       title: "Your choices and requests",
@@ -165,7 +160,7 @@ const privacyPolicy: LegalDocument = {
       title: "Updates",
       paragraphs: [
         { kind: "template", facts: ["effectiveDate"], render: (f) => `Last updated: ${f.effectiveDate}.` },
-        { kind: "text", text: "We will publish changes to this notice on this page." },
+        { kind: "text", text: "We will publish changes to this personal data processing policy on this page." },
       ],
     },
   ],
@@ -179,7 +174,7 @@ const websiteTerms: LegalDocument = {
   introduction: {
     kind: "template",
     facts: ["legalEntityName"],
-    render: (f) => `These terms describe the use of the website operated by ${f.legalEntityName}.`,
+    render: (f) => `These terms describe the use of the website operated by the ${f.legalEntityName} project.`,
   },
   sections: [
     {
@@ -194,19 +189,19 @@ const websiteTerms: LegalDocument = {
     {
       id: "website-content",
       title: "Website content",
-      paragraphs: [{ kind: "text", text: "The website introduces our services and publishes informational material. Any proposal, scope, fee or delivery commitment for client work must be agreed separately in the applicable contract." }],
+      paragraphs: [{ kind: "text", text: "The website introduces our services and publishes informational material. Any proposal, scope, fee, or delivery commitment for client work must be agreed upon separately in the applicable contract." }],
     },
     {
       id: "project-concepts",
       title: "Project concepts",
-      paragraphs: [{ kind: "text", text: "Items marked Concept are illustrative scenarios. They are not presented as completed client engagements or evidence of measured results." }],
+      paragraphs: [{ kind: "text", text: 'Items marked "Concept" are illustrative scenarios. They are not presented as completed client engagements or evidence of measured results.' }],
     },
     { id: "using-this-website", title: "Using this website", paragraphs: [{ kind: "fact", fact: "permittedUse" }] },
     {
       id: "external-links",
       title: "External links",
       paragraphs: [
-        { kind: "text", text: "Some pages may link to third-party websites. Those websites are operated by their respective providers." },
+        { kind: "text", text: "Some pages may contain links to third-party websites. Those websites are operated by their respective providers." },
         { kind: "fact", fact: "externalLinkProvisions" },
       ],
     },
@@ -215,7 +210,7 @@ const websiteTerms: LegalDocument = {
       id: "contact-and-changes",
       title: "Contact and changes",
       paragraphs: [
-        { kind: "template", facts: ["publicContactDetails"], render: (f) => `For questions about these terms, contact ${f.publicContactDetails}.` },
+        { kind: "template", facts: ["publicContactDetails"], render: (f) => `For any questions about these terms, contact ${f.publicContactDetails}.` },
         { kind: "template", facts: ["effectiveDate"], render: (f) => `Last updated: ${f.effectiveDate}.` },
       ],
     },

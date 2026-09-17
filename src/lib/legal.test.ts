@@ -79,7 +79,7 @@ describe("legal paragraph resolution", () => {
   it("renders templates with supplied facts", () => {
     expect(resolveParagraph(responsible, complete)).toEqual({
       status: "text",
-      text: "Sample legalEntityName is responsible for the processing described in this notice. You can contact us at Sample privacyContact.",
+      text: "The Sample legalEntityName project is responsible for the processing described in this personal data processing policy. You can contact us at Sample privacyContact.",
     });
   });
 

@@ -5,6 +5,7 @@
 
   .legal-hero { display: flex; flex-direction: column; align-items: flex-start; padding-block: clamp(2rem, 4vw, 3.5rem); }
   .legal-hero h1 { margin-block: 1.5rem 1rem; font-size: clamp(2rem, 3.5vw, 3.25rem); line-height: 1.1; letter-spacing: -0.045em; }
+  .legal-hero__updated { margin-bottom: 1.25rem; font-size: var(--type-label); line-height: var(--leading-label); letter-spacing: var(--type-label-tracking); text-transform: uppercase; font-weight: 600; color: var(--surface-muted); }
   .legal-hero__intro { max-width: 60ch; font-size: var(--type-body-lg); color: var(--surface-muted); }
 
   .legal-panel { display: grid; gap: var(--space-8); align-items: start; }

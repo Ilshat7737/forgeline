@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { PillLabel } from "@/components/ui/pill-label";
-import { legalFactLabels, legalUi, type LegalDocument, type LegalParagraph } from "@/content/legal";
+import { legalFactLabels, legalFacts, legalUi, type LegalDocument, type LegalParagraph } from "@/content/legal";
 import { missingLegalFacts, resolveParagraph } from "@/lib/legal";
 
 function LegalText({ paragraph }: { paragraph: LegalParagraph }) {
@@ -24,6 +24,10 @@ export function LegalDocumentPage({ document }: { document: LegalDocument }) {
       <Card as="section" surface="dark" shadow="soft" className="legal-hero" aria-labelledby="legal-heading">
         <PillLabel>{legalUi.eyebrow}</PillLabel>
         <h1 id="legal-heading">{document.heading}</h1>
+        {/* The update date sits apart from the document text, above the introduction. */}
+        {legalFacts.effectiveDate && (
+          <p className="legal-hero__updated">{legalUi.lastUpdatedLabel}: {legalFacts.effectiveDate}</p>
+        )}
         <p className="legal-hero__intro">
           {introduction.status === "text" ? introduction.text : `${legalUi.missing}: ${legalFactLabels.legalEntityName}`}
         </p>
